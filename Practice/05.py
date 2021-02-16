@@ -7,4 +7,4 @@ sa.insert(2, 367) #it insert 367 at index 2
 sa.pop(2) # it remove the element at index 2
 sa.remove(38) #it remove 38
 print(sa)
- 
+print()
