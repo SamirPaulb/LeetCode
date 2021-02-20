@@ -1,5 +1,6 @@
-def count_recursive(n=1):
- if n > 3:
- return
- print(n)
- count_recursive(n + 1)
+a = "Welcome to 30 Days of Code!"
+if a.strip() == "Welcome to 30 Days of Code!" :
+    print('''Hello, World. 
+Welcome to 30 Days of Code!''')
+else:
+    print("Nothing to show")
