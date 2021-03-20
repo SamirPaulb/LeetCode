@@ -55,6 +55,48 @@ class DoublyLL:
             n.nref = new_node
             new_node.pref = n
 
+    def add_after(self,data,x):
+        new_node = Node(data)
+        n = self.head
+        if n is None:
+            print("DLL is Empty")
+        while n is not  None:
+            if n.data == x:
+                break
+            n = n.nref
+        if n is None:
+            print("Node is Not Present")
+        if n.nref is None:
+            n.nref = new_node
+            new_node.pref = n
+        else:
+            new_node.nref = n.nref
+            n.nref.pref = new_node
+            n.nref = new_node
+            new_node.pref = n
+    
+    def add_before(self,data,x):
+        new_node = Node(data)
+        n = self.head
+        if n is None:
+            print("DLL is Empty")
+        if n.data == x:
+            self.head.pref = new_node
+            new_node.nref = self.head
+            return
+        while n.nref is not  None:
+            if n.nref.data == x:
+                break
+            n = n.nref
+        if n.nref is None:
+            print("Node is Not Present")
+        else:
+            n.nref.pref = new_node
+            new_node.pref = n
+            new_node.nref = n.nref
+            
+
+
 
 
 
@@ -69,6 +111,9 @@ DLL.add_begin(40)
 DLL.add_begin(50)
 DLL.add_end(403)
 DLL.add_end(9494838494)
+DLL.add_after(5000,29)
+DLL.add_before(540,29)
+
 
 
 
