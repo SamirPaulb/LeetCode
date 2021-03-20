@@ -21,11 +21,11 @@ class DoublyLL:
             print("The Linked List is Empty!")
         else:
             n = self.head
-            while n is not None:
+            while n.nref is not None:
                 n = n.nref
             while n is not None:
                 print(n.data)
-                n = n.pref
+                n = n.pref 
 
     def insert_only_empty(self,data):
         if self.head is None:
