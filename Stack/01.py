@@ -25,7 +25,4 @@ while True:
     else:
         print("Enter the correct option")
 
-
-
-
-                                                                      
+   
