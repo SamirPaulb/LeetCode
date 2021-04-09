@@ -15,3 +15,4 @@ for row in range(1,n+1):
         num = num +1
     print()
 
+
