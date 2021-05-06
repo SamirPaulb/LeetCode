@@ -20,7 +20,7 @@ use Python 2 because it's no longer supported.**
 2. Click the big green "Clone or download" button in the top right of
     the page, then click "Download ZIP".
 
-    ![Download ZIP](https://raw.githubusercontent.com/Akuli/python-tutorial/master/images/download-me.png)
+    ![Download ZIP](https://raw.githubusercontent.com/SamirPaul1/SamirPaul1.PYTHON/main/chapter3%20.py/multiplication%20table%202%20to%2020%20in%20different%20files%20by%20for%20loop/ZIP_1.png)
 
 3. Extract the ZIP and open it. Unfortunately I don't have any more
     specific instructions because how exactly this is done depends on
@@ -36,7 +36,7 @@ pull with git and run `make-html.py` again.
 
 ---
 <p align=center>                           
-<img src="https://raw.githubusercontent.com/SamirPaul1/SamirPaul1/main/SocialLogo/ThankYou.gif" height="162" />
+<img src="https://raw.githubusercontent.com/SamirPaul1/SamirPaul1.PYTHON/main/chapter3%20.py/multiplication%20table%202%20to%2020%20in%20different%20files%20by%20for%20loop/python.gif" height="162" />
 </p>
 
 ---
