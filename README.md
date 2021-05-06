@@ -20,7 +20,7 @@ use Python 2 because it's no longer supported.**
 2. Click the big green "Clone or download" button in the top right of
     the page, then click "Download ZIP".
 
-    ![Download ZIP](images/download-me.png)
+    ![Download ZIP](https://raw.githubusercontent.com/Akuli/python-tutorial/master/images/download-me.png)
 
 3. Extract the ZIP and open it. Unfortunately I don't have any more
     specific instructions because how exactly this is done depends on
