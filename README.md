@@ -16,7 +16,7 @@ use Python 2 because it's no longer supported.**
 
 ### How can I read this tutorial without an Internet connection?
 
-1. Go [here](https://github.com/SamirPaul1/SamirPaul1.PYTHON) if you aren't
+1. Go [HERE](https://github.com/SamirPaul1/Python-3) if you aren't
     here already.
 2. Click the big green "Clone or download" button in the top right of
     the page, then click "Download ZIP".
