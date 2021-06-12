@@ -1,21 +1,31 @@
-def roman_number(num):
-    if num > 3999:
-        print("Enter a number below 3999")
-    else:
-        value = [1000,900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1]
-        symbol = ["M","CM","D","CD","C","XC","L","XL","X","IX","V","IV","I"]
-        roman = ""
-        i = 0
-        while num >0:
-            div = num//value[i]
-            num = num% value[i]
-            while div:
-                roman  = roman +symbol[i]
-                div = div - 1
-            i = i+1
-        return roman
+class BST:
+    def __init__(self,key):
+        self.key = key
+        self.lchild = None
+        self.rchild = None
+    def insert(self,data):
+        if self.key is None:
+            self.key = BST(data)
+            return
+        if self.key == data:
+            return
+        if data < self.key:
+            if self.lchild:
+                self.lchild.insert(data)
+            else:
+                self.lchild = BST(data)
+            return 
+        else:
+            if self.rchild:
+                self.rchild.insert(data)
+            else:
+                self.rchild = BST(data)
 
-num = int(input("Write a number here: \n"))
-print(roman_number(num))
+root = BST(10)
+ll = [2,4,53,5,3,2,4,434,232,42,242,23]
+for i in ll:
+    root.insert(i)
+    
 
+        
 
