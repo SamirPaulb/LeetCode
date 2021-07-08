@@ -5,4 +5,3 @@ class Solution:
         t = list(t)
         t.sort()
         return s == t
-
