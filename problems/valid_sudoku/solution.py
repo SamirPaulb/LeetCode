@@ -1,28 +1,28 @@
 class Solution:
     def isValidSudoku(self, board: List[List[str]]) -> bool:
-        n = len(board[0])
-        for i in range(n):  # row
-            for j in range(n):   # column
-                a = board[i][j]
-                if a == '.':
+        
+        n = len(board)
+        for i in range(n):
+            for j in range(n):
+                if board[i][j] == ".":
                     continue
-                # check rows
+                
+                # checking the coloums
                 for k in range(n):
-                    if a == board[i][k] and k != j:
+                    if board[i][j] == board[i][k] and k != j:
                         return False
-                # check columns
+                
+                #checking the rows
                 for k in range(n):
-                    if a == board[k][j] and k != i:
+                    if board[i][j] ==  board[k][j] and i != k:
                         return False
-                    
-                #check gride
-                xi = i//3*3 # rows of grid
-                xj = j//3*3 # column of grid
-                    
-                for p in range(xi,xi+3):
-                    for q in range(xj,xj+3):
-                        if board[i][j] == board[p][q] and i != p and j != q:
+                
+                #checking the grid
+                xi = (i//3)*3 #rows of single grid
+                yj = (j//3)*3 #coloums of single grid
+                for r in range(xi, xi+3):
+                    for c in range(yj, yj+3):
+                        if board[r][c] == board[i][j] and i != r and j != c:
                             return False
         return True
-
-
+    
