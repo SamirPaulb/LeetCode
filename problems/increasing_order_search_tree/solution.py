@@ -14,6 +14,8 @@ class Solution:
             self.cur.right = root
             self.cur = root
             inorder(root.right)
-        ans = self.cur = TreeNode(None)
+        
+        ans = self.cur = TreeNode(-1)
         inorder(root)
         return ans.right
+    
