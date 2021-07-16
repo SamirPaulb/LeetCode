@@ -5,21 +5,27 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def __init__(self):
-        self.a = []
     def findTarget(self, root: TreeNode, k: int) -> bool:
+        a = []
         def inorder(root):
-            if root == None:
-                return
             if root.left:
                 inorder(root.left)
-            self.a.append(root.val)
+            a.append(root.val)
             if root.right:
                 inorder(root.right)
         inorder(root)
-        for i in range(len(self.a)-1):
-            for j in range(i+1, len(self.a)):
-                if self.a[i] + self.a[j] == k:
-                    return True
-        return False
-    
+        
+        fa = 0
+        la = len(a) - 1
+        while fa < la:
+            if a[fa] + a[la] > k:
+                la -= 1
+            elif a[fa] + a[la] < k:
+                fa += 1
+            else:
+                return k == a[fa] + a[la]
+                break
+
+        
+         
+ 
