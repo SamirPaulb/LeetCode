@@ -6,15 +6,15 @@
 #         self.right = right
 class Solution:
     def binaryTreePaths(self, root: TreeNode) -> List[str]:
-        res = []
-        def samir(root, s):
+        ans = []
+        def paths(root, s):
             if not root:
                 return
-            if not (root.left or root.right):
-                res.append( s + str(root.val) )
+            if root.left == None and root.right == None:
+                ans.append(s + str(root.val))
             if root.left:
-                samir(root.left, s + str(root.val) + "->" )
+                paths(root.left, s = s + str(root.val) + "->")
             if root.right:
-                samir(root.right, s + str(root.val) + "->" )
-        samir(root, "")
-        return res
+                paths(root.right, s = s + str(root.val) + "->")
+        paths(root, "")
+        return ans
