@@ -7,14 +7,12 @@
 class Solution:
     def sumOfLeftLeaves(self, root: TreeNode) -> int:
         self.s = 0
-        def leaf(root, isleav):
-            if isleav and root.left ==None and root.right == None:
-                self.s += root.val
-                return
-            if root.left != None : leaf(root.left, True)
-            if root.right != None : leaf(root.right, False)
-        if root == None:
-            return 0
-        leaf(root, False)
+        def leftleaf(root):
+            if not root:
+                return 
+            if root.left and root.left.left == None and root.left.right == None:
+                self.s += root.left.val
+            leftleaf(root.left)
+            leftleaf(root.right)
+        leftleaf(root)
         return self.s
-            
