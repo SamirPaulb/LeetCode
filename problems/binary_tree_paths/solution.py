@@ -7,14 +7,14 @@
 class Solution:
     def binaryTreePaths(self, root: TreeNode) -> List[str]:
         ans = []
-        def paths(root, s):
+        def path(root,s ):
             if not root:
                 return
             if root.left == None and root.right == None:
-                ans.append(s + str(root.val))
+                ans.append(s+ str(root.val))
             if root.left:
-                paths(root.left, s = s + str(root.val) + "->")
+                path(root.left, s = s + str(root.val) + "->")
             if root.right:
-                paths(root.right, s = s + str(root.val) + "->")
-        paths(root, "")
+                path(root.right, s=  s + str(root.val) + "->")
+        path(root, "")
         return ans
