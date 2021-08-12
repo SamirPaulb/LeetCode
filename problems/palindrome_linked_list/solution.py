@@ -4,11 +4,9 @@
 #         self.val = val
 #         self.next = next
 class Solution:
-    def isPalindrome(self, head: ListNode) -> bool:
+    def isPalindrome(self, head: Optional[ListNode]) -> bool:
         s = ""
         while head != None:
             s += str(head.val)
             head = head.next
-        a = s[::-1]
-        print(s)
-        return a == s
+        return s == s[::-1]
