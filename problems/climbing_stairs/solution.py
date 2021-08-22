@@ -1,10 +1,10 @@
-import math
+from math import factorial
 class Solution:
     def climbStairs(self, n: int) -> int:
-        if n == 1 or n==0:
-            return 1 or 0
+        if n==0 or n==1:
+            return 0 or 1
         ans = 0
         for i in range(n//2 + 1):
             m = n - i
-            ans += math.factorial(m)/(math.factorial(m-i)*math.factorial(i))
+            ans += factorial(m)/(factorial(m-i)*factorial(i))
         return int(ans)
