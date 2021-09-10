@@ -9,15 +9,11 @@ class Solution:
         root = TreeNode(max(nums))
         a = root
         def tree(root, nums):
-            if len(nums) == 0:
-                return root
-            a = nums.index(root.val)
-            if len(nums[:a]) != 0:
-                root.left = TreeNode(max(nums[:a]))
-            if len(nums[a+1:]) != 0:
-                root.right = TreeNode(max(nums[a+1:]))
-            tree(root.left, nums[:a])
-            tree(root.right, nums[a+1:])
-            
+            i = nums.index(max(nums))
+            if i>0: root.left = TreeNode(max(nums[:i]))
+            if i < len(nums)-1: root.right = TreeNode(max(nums[i+1:]))
+            if i>0: tree(root.left, nums[:i])
+            if i < len(nums)-1: tree(root.right, nums[i+1:])
+            return root
         tree(root, nums)
         return a
