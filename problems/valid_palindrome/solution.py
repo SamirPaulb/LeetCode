@@ -1,11 +1,7 @@
 class Solution:
     def isPalindrome(self, s: str) -> bool:
-        news = ""
-        for i in range(len(s)):
-            a = ord(s[i])
-            if a>=97 and a <= 122 or a>=48 and a<=57 or a>=65 and a<=90:
-                news += s[i]
-        news = news.lower()
-        revs = news[::-1]
-        return revs == news
-    
+        a = ""
+        for i in s:
+            if ord("A")<= ord(i)<= ord("Z") or ord("a")<= ord(i)<= ord("z") or ord("0")<= ord(i)<= ord("9"):
+                a += i.lower()
+        return a == a[::-1]
