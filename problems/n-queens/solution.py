@@ -1,18 +1,32 @@
 class Solution:
-    def solveNQueens(self, N: int) -> List[List[str]]:
-        ans = []
-        board = [['.'] * N for _ in range(N)]
-
-        def place(i: int, vert: int, ldiag: int, rdiag:int) -> None:
-            if i == N:
-                ans.append(["".join(row) for row in board])
-                return
-            for j in range(N):
-                vmask, lmask, rmask = 1 << j, 1 << (i+j), 1 << (N-i-1+j)
-                if vert & vmask or ldiag & lmask or rdiag & rmask: continue
-                board[i][j] = 'Q'
-                place(i+1, vert | vmask, ldiag | lmask, rdiag | rmask)
-                board[i][j] = '.'
-
-        place(0,0,0,0)
-        return ans
+    def solveNQueens(self, n: int) -> List[List[str]]:
+        col = set()
+        posDiag = set()
+        negDiag = set()
+        
+        res = []
+        board = [["."]*n for i in range(n)]
+        
+        def backtrack(r):
+            if r == n:
+                copy = ["".join(row) for row in board]
+                res.append(copy)
+                return res
+            
+            for c in range(n):
+                if c in col or (r+c) in posDiag or (c-r) in negDiag:
+                    continue
+                
+                col.add(c)
+                posDiag.add(r+c)
+                negDiag.add(c-r)
+                board[r][c] = "Q"
+                
+                backtrack(r+1)
+                
+                col.remove(c)
+                posDiag.remove(r+c)
+                negDiag.remove(c-r)
+                board[r][c] = "."
+        backtrack(0)
+        return res
