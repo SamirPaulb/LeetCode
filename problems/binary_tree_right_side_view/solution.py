@@ -3,8 +3,10 @@ class Solution:
         # Implement Level Order Traversal and append right node of each level to the answer
         final_ans = []
         q = []
+        
+        if not root: return q
+        
         q.append(root)
-        if not root: return
         while q:
             tmp_ans = []
             for i in range(len(q)):
@@ -13,4 +15,5 @@ class Solution:
                 if node.left: q.append(node.left)
                 if node.right: q.append(node.right)
             final_ans.append(tmp_ans[-1])
+        
         return final_ans
