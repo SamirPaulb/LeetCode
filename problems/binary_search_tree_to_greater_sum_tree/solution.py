@@ -6,21 +6,13 @@
 #         self.right = right
 class Solution:
     def bstToGst(self, root: TreeNode) -> TreeNode:
-        a = root
-        arr = []
-        def inorder(root):
-            if root.left:
-                inorder(root.left)
-            arr.append(root.val)
-            if root.right:
-                inorder(root.right)
-        inorder(root)
-        print(arr)
-        def change(root):
-            if root.left:
-                change(root.left)
-            root.val = sum(arr[arr.index(root.val):len(arr)])
-            if root.right:
-                change(root.right)
-        change(root)
-        return a
+        self.total = 0
+        def dfs(root):
+            if not root: return
+            dfs(root.right)
+            self.total += root.val
+            root.val = self.total
+            dfs(root.left)
+        
+        dfs(root)
+        return root
