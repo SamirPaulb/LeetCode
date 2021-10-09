@@ -11,5 +11,4 @@ class Solution:
             if mi >= node.val: return False
             if ma <= node.val: return False
             return checkBST(node.left, mi, node.val) and checkBST(node.right, node.val, ma)
-        return checkBST(root, float("-inf"), float("inf"))
-            
+        return checkBST(root, -float("inf"), float("inf"))
