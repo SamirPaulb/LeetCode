@@ -1,9 +1,12 @@
 class Solution:
     def findDuplicate(self, nums: List[int]) -> int:
-        a = [0]*(10**5 + 2)
+        arr = [0] * (10 ** 5 + 1)
+        
         for i in nums:
-            a[i] += 1
-        for i in range(len(a)):
-            if a[i] > 1: return i
-            
+            arr[i] += 1
+        
+        for i, ch in enumerate(arr):
+            if ch > 1: return i
+        
+        return -1
         
