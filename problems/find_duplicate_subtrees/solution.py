@@ -1,21 +1,17 @@
 class Solution:
     def findDuplicateSubtrees(self, root: Optional[TreeNode]) -> List[Optional[TreeNode]]:
+        dic = {}
         ans = []
-        d = {}
-        
-        def postorder(root):
+        def solve(root):
             if not root: return "#"
-            l = postorder(root.left)
-            r = postorder(root.right)
-            key = l + " " + r + " " + str(root.val)
-            
-            if not key in d: d[key] = 1
-            else: d[key] += 1
-            
-            if d[key] == 2: ans.append(root)
+            l = solve(root.left)
+            r = solve(root.right)
+            key = l + " " +  r + " " +  str(root.val)
+            if key not in dic: dic[key] = 1
+            else: dic[key] += 1
+            if dic[key] == 2: ans.append(root)
             
             return key
         
-        postorder(root)
-        
+        solve(root)
         return ans
