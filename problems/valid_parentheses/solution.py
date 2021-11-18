@@ -1,20 +1,21 @@
 class Solution:
     def isValid(self, s: str) -> bool:
+        dOpen = {
+            "(" : 1,
+            "{" : 2,
+            "[" : 3
+        }
+        dClose = {
+            ")" : -1,
+            "}" : -2,
+            "]" : -3
+        }
+        
         stack = []
-        s = list(s)
         for i in s:
-            if len(stack) == 0 and (i == ")" or i == "]" or i == "}"):
-                return False
+            if len(stack) != 0 and stack[-1] in dOpen and i in dClose and dOpen[stack[-1]] + dClose[i] == 0:
+                stack.pop()
+            else: stack.append(i)
             
-            elif len(stack) == 0:
-                stack.append(i)
-                
-            else:
-                if (stack[-1] == "(" and i == ")") or (stack[-1] == "{" and i == "}") or (stack[-1] == "[" and i == "]"):
-                    stack.pop()
-                else:
-                    stack.append(i)
-        print(stack)
         return len(stack) == 0
-                
-                
+        
