@@ -1,28 +1,28 @@
-import heapq
 class Solution:
     def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
-        myHeap = []
+        if len(lists) == 0: return None
+        while len(lists) > 1:
+            lists[0] = self.merge2SortedLists(lists[0], lists[1])
+            lists.pop(1)
         
-        for i in range(len(lists)):
-            head = lists[i]
-            a = head
-            while a:
-                myHeap.append(a.val)
+        return lists[0]
+    
+    def merge2SortedLists(self, l1, l2):
+        if not l1 or not l2: return l1 or l2
+        if l1.val <= l2.val: a, b = l1, l2
+        else: a, b = l2, l1
+        ans = a
+        while a or b:
+            if not a.next: 
+                a.next = b
+                return ans
+            if not b: return ans
+            if a.next.val <= b.val: a = a.next
+            else:
+                tmp = a.next
+                a.next = b
+                b = tmp
                 a = a.next
-        # As heappush takes O(log(N)) time so First appending to the array (myHeap) then converting the array into a min heap so the time complexity will be O(N*N)  
-        heapq.heapify(myHeap)
-        
-        arr = []
-        
-        while myHeap:
-            arr.append(heapq.heappop(myHeap))
-            
-        newLL = ListNode(-1)
-        a = newLL
-        
-        for i in arr:
-            a.next = ListNode(i)
-            a = a.next
-            
-        return newLL.next
                 
+        
+        
