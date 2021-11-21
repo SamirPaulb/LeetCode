@@ -3,18 +3,17 @@ class Solution:
         nums.sort()
         ans = None
         prevDiff = float("inf")
-        for i, ch in enumerate(nums):
-            if i > 0 and nums[i] == nums[i - 1]: continue
-            l = i + 1
-            r = len(nums) - 1
+        for i in range(len(nums)):
+            if i > 0 and nums[i] == nums[i - 1]: continue # if two consecutive elelments are same then for the first same nums[i] < l < r one res if added. so no need to add same repeted res.
+            l, r = i + 1, len(nums) - 1
             while l < r:
-                threeSum = ch + nums[l] + nums[r]
+                threeSum = nums[i] + nums[l] + nums[r]
                 if abs(target - threeSum) < prevDiff: 
-                    prevDiff = abs(target - threeSum)
                     ans = threeSum
-                    
+                    prevDiff = abs(target - threeSum)
                 if threeSum < target: l += 1
                 elif threeSum > target: r -= 1
                 else: return threeSum
-                        
+        
         return ans
+                
