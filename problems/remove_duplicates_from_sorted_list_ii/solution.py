@@ -1,22 +1,22 @@
-# https://www.youtube.com/watch?v=7PGsMXlMzGA
 class Solution:
     def deleteDuplicates(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        if head == None or head.next == None: return head
-        
-        dummy = ListNode(-1)
-        itr = dummy 
-        itr.next = head   # potential unique element
-        cur = head.next
-        
-        while cur:
+        pre = ListNode(-1)
+        pre.next = head
+        ans = pre
+        a = pre.next
+        while a and a.next:
             isLoopRan = False
-            while cur and itr.next.val == cur.val:
+            while a.next and a.val == a.next.val:
+                a = a.next
                 isLoopRan = True
-                cur = cur.next
                 
-            if isLoopRan: itr.next = cur
-            else: itr = itr.next
-            
-            if cur: cur = cur.next
+            if isLoopRan: # nodeCount[0] occurs more than one times
+                tmp = a.next
+                a.next = None
+                pre.next = tmp
+                a = tmp
+            else:
+                a = a.next
+                pre = pre.next
         
-        return dummy.next
+        return ans.next
