@@ -1,30 +1,32 @@
-# https://www.youtube.com/watch?v=BJnMZNwUk1M
-    
 class Solution:
     def spiralOrder(self, matrix: List[List[int]]) -> List[int]:
-        res = []
-        left, right = 0, len(matrix[0])
-        top, bottom = 0, len(matrix)
+        up, low, left, right, res = 0, len(matrix), 0, len(matrix[0]), []
         
-        while left < right and top < bottom:
-            # get every i in the top row 
+        while up < low and left < right:
+            # For 1 -> 2 -> 3
             for i in range(left, right):
-                res.append(matrix[top][i])
-            top += 1
-            # get every i in the right column
-            for i in range(top, bottom):
-                res.append(matrix[i][right-1])
+                res.append(matrix[up][i])
+            up += 1
+            # For 6 -> 9 
+            for i in range(up, low):
+                res.append(matrix[i][right - 1])
             right -= 1
-            # check  if the remaining unchecked matrix is single rowed or single columned
-            if not (left < right and top < bottom):
-                break
-            # get every i in the bottom row
-            for i in range(right-1, left-1, -1):
-                res.append(matrix[bottom-1][i])
-            bottom -= 1
-            # get every i in the left column
-            for i in range(bottom-1, top-1, -1):
+            if not (up < low and left < right): break
+            # For 8 -> 7
+            for i in range(right - 1, left - 1, -1):
+                res.append(matrix[low - 1][i])
+            low -= 1
+            # For 4
+            for i in range(low - 1, up - 1, -1):
                 res.append(matrix[i][left])
             left += 1
-            
+        
         return res
+        
+    
+'''
+[[1,2,3],[4,5,6],[7,8,9]]
+[[1,2,3,4],[5,6,7,8],[9,10,11,12]]
+[[6,9,7]]
+[[1,2],[3,4]]
+'''
