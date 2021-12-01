@@ -8,16 +8,21 @@ class Node:
 
 class Solution:
     def cloneGraph(self, node: 'Node') -> 'Node':
-        oldToNew = {}
+        # BFS - QUEUE
+        if not node: return None
+        # map original nodes to their clones
+        d = {node : Node(node.val)}
+        q = [node]
         
-        def dfs(node):
-            if node in oldToNew:
-                return oldToNew[node]
-            
-            copy = Node(node.val)
-            oldToNew[node] = copy
-            for nei in node.neighbors:
-                copy.neighbors.append(dfs(nei))
-            return copy
-        
-        return dfs(node) if node else None
+        while q:
+            for i in range(len(q)):
+                curNode = q.pop()
+                for nei in curNode.neighbors:
+                    if nei not in d:
+                        # store copy of the neighboring node
+                        d[nei] = Node(nei.val)
+                        q.append(nei)
+                    # connect the node copy at hand to its neighboring nodes (also copies) 
+                    d[curNode].neighbors.append(d[nei])
+        # return copy of the starting node
+        return d[node]
