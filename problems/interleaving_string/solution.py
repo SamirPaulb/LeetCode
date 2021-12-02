@@ -1,16 +1,16 @@
-# https://www.youtube.com/watch?v=3Rw3p9LrgvE
 class Solution:
     def isInterleave(self, s1: str, s2: str, s3: str) -> bool:
-        if len(s1) + len(s2) != len(s3): return False
+        m = len(s1)
+        n = len(s2)
+        @lru_cache(None)
         
-        dp = [[False] * (len(s2) + 1) for i in range(len(s1) + 1)]
-        dp[-1][-1] = True
+        def dfs(i, j, k):
+            if i > m - 1 and j > n - 1:
+                return True
+            if i < m and s1[i] == s3[k] and dfs(i + 1, j, k + 1):
+                return True
+            if j < n and s2[j]  == s3[k] and dfs(i, j + 1, k + 1):
+                return True
+            return False
         
-        for i in range(len(s1), -1, -1):
-            for j in range(len(s2), -1, -1):
-                if i < len(s1) and s1[i] == s3[i + j] and dp[i + 1][j] == True:
-                    dp[i][j] = True
-                if j < len(s2) and s2[j] == s3[i + j] and dp[i][j + 1] == True:
-                    dp[i][j] = True
-        
-        return dp[0][0]
+        return Counter(s1) + Counter(s2) == Counter(s3) and dfs(0, 0, 0)
