@@ -1,16 +1,14 @@
 class Solution:
     def pathSum(self, root: Optional[TreeNode], targetSum: int) -> List[List[int]]:
-        res, tmp = [], []
-        def dfs(root, sum, tmp, res):
+        res = []
+        def solve(root, tmp, s):
             if not root: return
-            if not root.left and not root.right and sum == root.val:
-                tmp.append(root.val)
-                res.append(tmp)
-            else:
-                dfs(root.left, sum - root.val, tmp + [root.val], res)
-                dfs(root.right, sum - root.val, tmp + [root.val], res)
-                
-        dfs(root, targetSum, tmp, res)
+            if not root.left and not root.right:
+                if root.val + s == targetSum:
+                    tmp.append(root.val)
+                    res.append(tmp)
+            solve(root.left, tmp + [root.val], s + root.val)
+            solve(root.right, tmp + [root.val], s + root.val)
+        
+        solve(root, [], 0)
         return res
-        
-        
