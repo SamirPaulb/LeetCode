@@ -1,4 +1,4 @@
-# https://github.com/SamirPaul1/Problem-Solving/blob/main/Merge%20Sort%20on%20LinkedList.py
+# https://github.com/SamirPaul1/Problem-Solving/blob/main/Merge_Sort_on_LinkedList.py
 class Solution:
     def sortList(self, head: Optional[ListNode]) -> Optional[ListNode]:
         if not head or not head.next: return head
@@ -7,23 +7,30 @@ class Solution:
         middle.next = None
         leftPart = self.sortList(head)
         rightPart = self.sortList(nextToMiddle)
-        return self.mergeSort(leftPart, rightPart)    
+        return self.sortMerge(leftPart, rightPart)
     
-    def mergeSort(self, a, b):
-        if not a or not b: return a or b
+    def sortMerge(self, a, b):
+        result = None
+        if not a: return b
+        if not b: return a
         if a.val <= b.val:
             result = a
-            result.next = self.mergeSort(a.next, b)
-        else:
+            result.next = self.sortMerge(a.next, b)
+        if a.val > b.val:
             result = b
-            result.next = self.mergeSort(a, b.next)
-        return result
+            result.next = self.sortMerge(a, b.next)
         
+        return result
+    
     def findMiddle(self, head):
-        slow, fast = head, head
+        if not head or not head.next: return head
+        fast, slow = head.next, head
         while fast.next and fast.next.next:
             fast = fast.next.next
             slow = slow.next
         return slow
+        
+        
+        
         
         
