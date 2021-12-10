@@ -1,14 +1,15 @@
 class Solution:
     def hasPathSum(self, root: Optional[TreeNode], targetSum: int) -> bool:
-        arr = []
-        def solve(root, s): 
+        allPathSums = []
+        
+        def findAllPathSums(root, s):
             if not root: return s
             if not root.left and not root.right:
-                s += root.val
-                arr.append(s)
-            solve(root.left, s + root.val)
-            solve(root.right, s + root.val)
+                allPathSums.append(root.val + s)
+            findAllPathSums(root.left, root.val + s)
+            findAllPathSums(root.right, root.val + s)
         
-        solve(root, 0)
-        return targetSum in arr
-            
+        findAllPathSums(root, 0)
+        
+        return targetSum in allPathSums
+        
