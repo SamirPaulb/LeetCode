@@ -1,17 +1,16 @@
 class Solution:
     def flatten(self, root: Optional[TreeNode]) -> None:
-        def makeFlate(root):
+        def solve(root):
             if not root: return
-            makeFlate(root.left)
+            solve(root.left)
             tmp = root.right
             root.right = root.left
             root.left = None
             while root.right:
                 root = root.right
             root.right = tmp
-            makeFlate(root.right)
-        
-        makeFlate(root)
-        
+            solve(root.right)
+            
+        solve(root)
         return root
         
