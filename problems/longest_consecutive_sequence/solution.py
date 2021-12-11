@@ -1,25 +1,25 @@
 import heapq
 class Solution:
     def longestConsecutive(self, nums: List[int]) -> int:
-        myHeap = []
-        for i in nums:
-            heapq.heappush(myHeap, i)
+        if not nums: return 0
+        heapq.heapify(nums) # Now nums is a min heap
         
-        prev = None
-        sequence = 0
-        max_sequence = 0
-        while myHeap:
-            cur_num = heapq.heappop(myHeap)
-            if prev == None:
-                sequence = 1
-            elif prev != None and cur_num - prev == 1:
-                sequence += 1
-            elif prev == cur_num:
-                continue
-            else:
-                sequence = 1
+        sortedNums = []
+        while nums:
+            sortedNums.append(heapq.heappop(nums))
             
-            prev = cur_num
-            max_sequence = max(max_sequence, sequence)
+        prev = sortedNums[0]
+        count  = 1
+        res = 1
+        for i in sortedNums[1:]:
+            curr = i
+            if curr - prev == 0: continue
+            if curr - prev == 1:
+                count += 1
+                prev = curr
+            else: 
+                count = 1
+                prev = curr
+            res = max(res, count)
         
-        return max_sequence
+        return res
