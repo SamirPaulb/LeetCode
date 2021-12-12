@@ -1,20 +1,16 @@
 class Solution:
-    def partition(self, s: str) -> List[List[str]]:
+    def partition(self, s):
         res = []
-        part = []
-        
-        def dfs(i):
-            if i >= len(s):
-                res.append(part.copy())
-                return 
-            for j in range(i, len(s)):
-                if self.isPalindrom(s[i:j+1]):
-                    part.append(s[i:j+1])
-                    dfs(j+1)
-                    part.pop()
-                    
-        dfs(0)
+        self.dfs(s, [], res)
         return res
     
-    def isPalindrom(self, a):
-        return a == a[::-1]
+    def dfs(self, s, path, res):
+        if not s:
+            res.append(path)
+            return
+        for i in range(1, len(s) + 1):
+            if self.isPalindrom(s[:i]):
+                self.dfs(s[i:], path + [s[:i]], res)
+                
+    def isPalindrom(self, s):
+        return s == s[::-1]
