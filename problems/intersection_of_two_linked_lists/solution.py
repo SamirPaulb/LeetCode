@@ -1,13 +1,23 @@
 # https://www.youtube.com/watch?v=u4FWXfgS8jw&t=911s
 class Solution:
     def getIntersectionNode(self, headA: ListNode, headB: ListNode) -> ListNode:
-        # take 2 dummy nodes a and b ; 
         a, b = headA, headB
-        while a != b:
-            if a == None: a = headB
-            else: a = a.next
+        count = 0
+        while a and b:
+            if a == b:
+                return a
+                break
+            a = a.next
+            b = b.next
+            if not a and b: 
+                a = headB
+                count += 1
+            if not b and a: 
+                b = headA
+                count += 1
+            
+            if count > 2: return None
+            
+        return None
                 
-            if b == None: b = headA
-            else: b = b.next
-        
-        return a
+            
