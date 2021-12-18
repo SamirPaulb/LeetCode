@@ -1,12 +1,19 @@
 class Solution:
     def findMaxLength(self, nums: List[int]) -> int:
-        maxlength = 0
-        cur_sum = 0
-        mydict = {0:-1}
+        hashMap = {0:-1}
+        ans = 0
+        currSum = 0
+        # consider 0 as -1; 1 as +1 => is currSum ==0 => equal number of 0 and 1
         for i in range(len(nums)):
-            cur_sum += 1 if nums[i] == 1 else -1
-            if cur_sum in mydict:
-                maxlength = max(maxlength, i-mydict[cur_sum])
+            if nums[i] == 1: currSum += 1
+            else: currSum -= 1
+                
+            if currSum not in hashMap:
+                hashMap[currSum] = i 
             else:
-                mydict[cur_sum] = i
-        return maxlength
+                ans = max(ans, i - hashMap[currSum])
+        
+        return ans
+
+# nums = [0,1,0,1,0,0,0,0,0,0,0,1,1,1,0,1,1,0,0,0,0,0,0,1,1,1,1,1,1,1]
+
