@@ -1,32 +1,48 @@
-class Solution(object):
-    def shortestCommonSupersequence(self, str1, str2):
-        """
-        :type str1: str
-        :type str2: str
-        :rtype: str
-        """
-        def lcs(A, B):
-            n, m = len(A)+1, len(B)+1
-            dp = [["" for _ in range(m)] for _ in range(n)]
-            for index_i in range(1, n):
-                for index_j in range(1, m):
-                    if A[index_i-1] == B[index_j-1]:
-                        dp[index_i][index_j] = dp[index_i-1][index_j-1] + A[index_i - 1]
-                    else:
-                        dp[index_i][index_j] = max(dp[index_i-1][index_j], dp[index_i][index_j-1], key=len)
-            return dp[-1][-1]
+# https://www.youtube.com/watch?v=VDhRg-ZJTuc&list=PL_z_8CaSLPWekqhdCPmFohncHwz8TY2Go&index=29
+# https://leetcode.com/problems/shortest-common-supersequence/
+
+'''
+Using Printing Longest Common Subsequence(LCS)
+The reverse Path of printting LCS in dp matrix is the Common Supersequence
+which contains both strings X and Y
+'''
+class Solution:
+    def shortestCommonSupersequence(self, str1: str, str2: str) -> str:
+        X = str1; Y = str2; m = len(X); n = len(Y)
+        dp = [[0]*(n+1) for i in range(m+1)]
+        # As now finding LCS dp
+        # 0th column and 0th row of dp = 0 as with any of X or Y of length 0; NO common subsequence possible
+        for i in range(1, m+1):
+            for j in range(1, n+1):
+                if X[i-1] == Y[j-1]:
+                    dp[i][j] = 1 + dp[i-1][j-1]
+                else:
+                    dp[i][j] = max(dp[i][j-1], dp[i-1][j])
         
-        result = ""
-        index_i, index_j = 0, 0
-        for s in lcs(str1, str2):
-            while str1[index_i] != s:
-                result += str1[index_i]
-                index_i += 1
-            while str2[index_j] != s:
-                result += str2[index_j]
-                index_j += 1
+        # Now traverse from (m, m) to (0, 0) and store the path in res
+        # this path is actually Common Supersequence
+        i = m; j = n; res = ""
+        while i > 0 and j > 0:
+            if X[i-1] == Y[j-1]:
+                res += X[i-1]    # or Y[j-1] same
+                i -= 1; j -= 1
+            else:
+                if dp[i][j-1] > dp[i-1][j]:
+                    res += Y[j-1] # add Y[j-1] as this greater
+                    j -= 1
+                else:
+                    res += X[i-1]
+                    i -= 1
+        
+        # If any of i == 0 or j == 0; then also we have to add the remaining elelments as Supersequence containd all common elelments of X and Y
+        while i > 0:
+            res += X[i-1]
+            i -= 1
+        
+        while j > 0:
+            res += Y[j-1]
+            j -= 1
+        
+        return res[::-1]  # reverse of res and we have traversed from the end
+    
                 
-            result += s
-            index_i, index_j = index_i+1, index_j+1
-            
-        return result + str1[index_i:] + str2[index_j:]
