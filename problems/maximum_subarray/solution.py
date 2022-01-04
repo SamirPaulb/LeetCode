@@ -1,10 +1,12 @@
 class Solution:
     def maxSubArray(self, nums: List[int]) -> int:
-        # Implement Kadane's Algorithm
-        cs, ms = nums[0], nums[0]   # Current Sum, Maximum Sum
+        # kadne's Algorithm
+        cs = nums[0]
+        ms = cs
         for i in range(1, len(nums)):
-            cs = max(cs + nums[i], nums[i])
-            ms = max(cs, ms)
+            cs += nums[i]
+            cs = max(cs, nums[i])
+            ms = max(ms, cs)
         
         return ms
-        
+    
