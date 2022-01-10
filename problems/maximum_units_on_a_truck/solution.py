@@ -1,19 +1,19 @@
 class Solution:
-    def maximumUnits(self, bt: List[List[int]], ts: int) -> int:
-        m = [] # to store number Of Units Per Box
-        for i in range(len(bt)):
-            m.append(bt[i][1])
-        ans = 0
-        for i in range(len(bt)):
-            me = max(m)     # max element of m 
-            mi = m.index(me)    # index of max element (number Of Units Per Box)
-            if bt[mi][0] < ts:
-                ans += bt[mi][0] * bt[mi][1]
-                m[mi] = 0
-                ts -= bt[mi][0]
-            elif bt[mi][0] >= ts:
-                ans += bt[mi][1] * ts
-                ts = 0
-            
-        return ans
+    def maximumUnits(self, boxTypes: List[List[int]], truckSize: int) -> int:
+        # Fractional Knapsack Problem
+        # numberOfBoxes = Weight array
+        # numberOfUnitsPerBox = Value array
         
+        boxTypes = sorted(boxTypes, key=lambda x: x[1], reverse=True)
+        
+        res = 0
+        for i in range(len(boxTypes)):
+            if boxTypes[i][0] > truckSize:
+                res += truckSize * boxTypes[i][1]
+                boxTypes[i][0] -= truckSize
+                break
+            else:
+                res += boxTypes[i][0] * boxTypes[i][1]
+                truckSize -= boxTypes[i][0]
+        
+        return res
