@@ -1,32 +1,33 @@
 class Solution:
     def spiralOrder(self, matrix: List[List[int]]) -> List[int]:
-        up, low, left, right, res = 0, len(matrix), 0, len(matrix[0]), []
+        m = len(matrix); n = len(matrix[0])
         
-        while up < low and left < right:
-            # For 1 -> 2 -> 3
-            for i in range(left, right):
-                res.append(matrix[up][i])
-            up += 1
-            # For 6 -> 9 
-            for i in range(up, low):
-                res.append(matrix[i][right - 1])
-            right -= 1
-            if not (up < low and left < right): break
-            # For 8 -> 7
-            for i in range(right - 1, left - 1, -1):
-                res.append(matrix[low - 1][i])
-            low -= 1
-            # For 4
-            for i in range(low - 1, up - 1, -1):
-                res.append(matrix[i][left])
-            left += 1
+        t = 0; d = m-1; l = 0; r = n-1
+        res = []
+        
+        while t <= d and l <= r:
+            
+            for i in range(l, r+1):
+                res.append(matrix[t][i])
+            t += 1
+            
+            if l > r or t > d: break
+                
+            for i in range(t, d+1):
+                res.append(matrix[i][r])
+            r -= 1
+            
+            if l > r or t > d: break
+            
+            for i in range(r, l-1, -1):
+                res.append(matrix[d][i])
+            d -= 1
+            
+            if l > r or t > d: break
+                
+            for i in range(d, t-1, -1):
+                res.append(matrix[i][l])
+            l += 1
         
         return res
-        
-    
-'''
-[[1,2,3],[4,5,6],[7,8,9]]
-[[1,2,3,4],[5,6,7,8],[9,10,11,12]]
-[[6,9,7]]
-[[1,2],[3,4]]
-'''
+            
