@@ -1,12 +1,28 @@
+# https://www.youtube.com/watch?v=32Ll35mhWg0
 class Solution:
     def findDuplicate(self, nums: List[int]) -> int:
+        # Use concept of 142. Linked List Cycle II (find the node where linked list has cycle)
         
-        numberLine = [0 for i in range(10**5 + 1)]
+        # start hopping from Node
+        slow, fast = 0, 0
+        # Cycle detection
+        # Let slow jumper and fast jumper meet somewhere in the cycle 
+        while True:
+            # slow jumper hops 1 step, while fast jumper hops two steps forward.
+            slow = nums[slow]
+            fast = nums[nums[fast]]
+            
+            if slow == fast:
+                break
         
-        for i in nums:
-            numberLine[i] += 1
+        # for locating start node of cycle
+        check = 0
+        while True:
+            # Locate the start node of cycle (i.e., the duplicate number)
+            slow = nums[slow]
+            check = nums[check]
+            
+            if check == slow:
+                break
         
-        for i in range(len(numberLine)):
-            if numberLine[i] > 1:
-                return i
-        
+        return check
