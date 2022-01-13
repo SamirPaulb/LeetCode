@@ -1,11 +1,16 @@
+# https://youtu.be/-lfHWWMmXXM
 class Solution:
     def firstMissingPositive(self, nums: List[int]) -> int:
-        a = [False]*(10**6) # This array will take constant space as length of this array is not dependent on the length of given array. 
-        # A Boolean takes 1 Bit only So if we take a boolean array it will take 32 times less space than integer array; as an integer takes 4 Bite = 4*8 Bit = 32 Bit
-        for i in nums:
-            if i > 0 and i < len(a):
-                a[i-1] = True
-        #print(a)
-        for i in range(len(a)):
-            if a[i] == False:
-                return i + 1
+        n = len(nums)
+        
+        for i in range(n):
+            correctPos = nums[i] - 1
+            
+            while 0 <= correctPos < n and nums[correctPos] != nums[i]:
+                nums[i], nums[correctPos] = nums[correctPos], nums[i]
+                correctPos = nums[i] - 1
+            
+        for i in range(n):
+            if i+1 != nums[i]: return  i+1
+        
+        return n+1
