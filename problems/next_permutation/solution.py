@@ -1,24 +1,33 @@
 class Solution:
     def nextPermutation(self, nums: List[int]) -> None:
-        # find out swap point
-        sp = -1; n = len(nums)
-        for i in range(1, n):
-            if nums[i] > nums[i - 1]: sp = i
+        # nums = [1,3,5,4,3,7,6,1]
         
-        if sp == -1: # Swap point exist ie. nums = [5, 4, 3, 2, 1]
-            return nums.reverse()
+        s1 = None
+        for i in range(len(nums)-1, -0, -1):
+            if nums[i] > nums[i-1]:
+                s1 = i - 1
+                break
         
-        # checking wheather any i, i > sp for which nums[i] > nums[sp - 1]
-        # ie. nums = [1, 2, 3, 5, 4, 2]
-        lsp, rsp = sp - 1, sp # Left Swap point, Right swap point
-        for i in range(sp+1, n):
-            if nums[i] > nums[lsp]: rsp = i
+        s2 = None
+        if s1 != None:
+            for i in range(len(nums)-1, s1, -1):
+                if nums[i] > nums[s1]:
+                    s2 = i
+                    break
         
-        nums[lsp], nums[rsp] = nums[rsp], nums[lsp]
+        if s1 != None and s2 != None:
+            nums[s1], nums[s2] = nums[s2], nums[s1]
+        # nums = [1,3,5,4,6,7,3,1]
         
-        l, r = sp, n - 1
-        while l < r:
-            nums[l], nums[r] = nums[r], nums[l]
-            l += 1; r -= 1
-        
-        return nums
+        if s1 != None:
+            l = s1 + 1; r = len(nums) - 1
+            while l < r:
+                nums[l], nums[r] = nums[r], nums[l]
+                l += 1
+                r -= 1
+        else:
+            l = 0; r = len(nums) - 1
+            while l < r:
+                nums[l], nums[r] = nums[r], nums[l]
+                l += 1
+                r -= 1
