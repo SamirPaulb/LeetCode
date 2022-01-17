@@ -1,20 +1,24 @@
 class Solution:
     def longestPalindrome(self, s: str) -> str:
         res = ""
+        
         for i in range(len(s)):
-            # Check for ODD length
+            # For Palindromic Substring of EVEN length
             l = i; r = i
             while l >= 0 and r < len(s) and s[l] == s[r]:
-                if (r - l + 1) > len(res):
+                if r-l+1 > len(res):
                     res = s[l:r+1]
+                    
                 l -= 1
                 r += 1
                 
-            # Check for EVEN length
-            l = i; r = i + 1
+            
+            # For Palindromic Substring of ODD length
+            l = i; r = i+1
             while l >= 0 and r < len(s) and s[l] == s[r]:
-                if (r - l + 1) > len(res):
+                if r-l+1 > len(res):
                     res = s[l:r+1]
+                    
                 l -= 1
                 r += 1
                 
