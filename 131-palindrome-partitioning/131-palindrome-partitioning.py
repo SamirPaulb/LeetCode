@@ -1,17 +1,17 @@
 class Solution:
-    def partition(self, s):
+    def partition(self, s: str) -> List[List[str]]:
         res = []
         
         def isPal(s):
             return s == s[::-1]
         
-        def dfs(s, path):
+        def solve(s, path):
             if not s:
                 res.append(path)
-                return
-            for i in range(1, len(s)+1):
-                if isPal(s[:i]): 
-                    dfs(s[i:], path + [s[:i]])
+            for i in range(len(s)):
+                if isPal(s[:i+1]):
+                    solve(s[i+1:], path + [s[:i+1]])
         
-        dfs(s, [])
+        solve(s, [])
+        
         return res
