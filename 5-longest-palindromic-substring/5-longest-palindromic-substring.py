@@ -1,27 +1,28 @@
 class Solution:
     def longestPalindrome(self, s: str) -> str:
-        n = len(s)
-        if s == s[::-1] or n <= 1: return s
-        p = 1
-        res = s[0]
+        res = ""
         
-        for i in range(n):
+        for i in range(len(s)):
+            # For Palindromic Substring of EVEN length
             l = i; r = i
-            while l>=0 and r < n and s[l] == s[r]:
-                length = r - l + 1
-                if length > p:
+            while l >= 0 and r < len(s) and s[l] == s[r]:
+                if r-l+1 > len(res):
                     res = s[l:r+1]
-                    p = length
+                    
                 l -= 1
                 r += 1
+                
             
+            # For Palindromic Substring of ODD length
             l = i; r = i+1
-            while l >=0 and r < n and s[l] == s[r]:
-                length = r - l + 1
-                if length > p:
+            while l >= 0 and r < len(s) and s[l] == s[r]:
+                if r-l+1 > len(res):
                     res = s[l:r+1]
-                    p = length
+                    
                 l -= 1
                 r += 1
                 
         return res
+    
+# Time: O(n^2)
+# Space: O(1)
