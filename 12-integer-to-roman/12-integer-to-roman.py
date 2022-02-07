@@ -21,3 +21,6 @@ class Solution:
             num = num % i
         
         return res
+    
+# Time Complexity: O(1);  as it is constant independent on num
+# Space Complexity: O(1); constant space
