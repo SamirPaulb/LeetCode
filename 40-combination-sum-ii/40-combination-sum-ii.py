@@ -8,9 +8,11 @@ class Solution:
             if target == 0: res.append(path); return
             if start >= n or target < 0: return
             
+            prev = -1
             for i in range(start, n):
-                if i > start and candidates[i] == candidates[i-1]: continue
+                if candidates[i] == prev: continue
                 dfs(i+1, path + [candidates[i]], target - candidates[i])
+                prev = candidates[i]
         
         dfs(0, [], target)
         return res
