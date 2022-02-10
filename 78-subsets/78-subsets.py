@@ -3,12 +3,12 @@ class Solution:
         n = len(nums)
         res = []
         
-        def dfs(i, path):
-            if i >= n: 
+        def dfs(arr, path):
+            if not arr: 
                 res.append(path)
                 return
-            dfs(i+1, path + [nums[i]])
-            dfs(i+1, path)
+            dfs(arr[1:], path + [arr[0]])
+            dfs(arr[1:], path)
                 
-        dfs(0, [])
+        dfs(nums, [])
         return res
