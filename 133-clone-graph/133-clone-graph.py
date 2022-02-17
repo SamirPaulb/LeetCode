@@ -9,18 +9,17 @@ class Node:
 class Solution:
     def cloneGraph(self, node: 'Node') -> 'Node':
         if not node: return None
-        
         d = {node : Node(node.val)}
-        
         q = [node]
+        
         while q:
-            currNode = q.pop(0)
-            for nei in currNode.neighbors:
+            curNode = q.pop(0)
+            for nei in curNode.neighbors:
                 if nei not in d:
                     d[nei] = Node(nei.val)
+                    d[curNode].neighbors.append(d[nei])
                     q.append(nei)
-                d[currNode].neighbors.append(d[nei])
+                else:
+                    d[curNode].neighbors.append(d[nei])
         
         return d[node]
-                
-        
