@@ -1,7 +1,8 @@
 class Solution:
     def backspaceCompare(self, s: str, t: str) -> bool:
-        i = len(s) - 1
-        j = len(t) - 1
+        i = len(s) - 1  # Traverse from the end of the strings
+        j = len(t) - 1 
+        # The number of backspaces required till we arrive at a valid character
         bs = 0  # count of backspace for s
         bt = 0  # count of backspace for t
         
@@ -25,14 +26,14 @@ class Solution:
                     j -= 1
                 else:
                     break
-                    
+            # Also ensure that both the character indices are valid. If it is not valid,  it means that we are comparing a "#" with a valid character.
             if i >= 0 and j < 0: return False
             if i < 0 and j >= 0: return False
+            
             if s[i] != t[j]: return False
             
             i -= 1
             j -= 1
-            
         
         
         return True
