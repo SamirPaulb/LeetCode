@@ -1,17 +1,11 @@
 import heapq
 class Solution:
     def largestSumAfterKNegations(self, nums: List[int], k: int) -> int:
-        heap = []
-        for i in nums:
-            heapq.heappush(heap, i)
+        heapq.heapify(nums)
         
         for i in range(k):
-            a = heapq.heappop(heap)
+            a = heapq.heappop(nums)
             a *= -1
-            heapq.heappush(heap, a)
+            heapq.heappush(nums, a)
         
-        res = 0
-        while heap:
-            res += heapq.heappop(heap)
-        
-        return res
+        return sum(nums)
