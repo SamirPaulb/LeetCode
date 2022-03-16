@@ -1,6 +1,5 @@
 class Solution:
     def canJump(self, nums: List[int]) -> bool:
-        if len(nums) <= 1: return True
         maxReachable = nums[0]
         i = 0
         
