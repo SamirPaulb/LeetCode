@@ -5,7 +5,7 @@ class Solution:
             shifts[i] += shifts[i+1]
             if shifts[i] > 26:
                 shifts[i] = shifts[i] % 26
-        print(shifts)
+        
         s = list(s)
         for i in range(len(s)):
             a = ord(s[i]) + shifts[i]
