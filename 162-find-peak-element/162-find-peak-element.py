@@ -30,4 +30,7 @@ class Solution:
                         return n-1
                     else:
                         return n-2
+                    
+# Time: O(n)
+# Space: O(1)
         
