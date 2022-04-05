@@ -16,7 +16,7 @@ class Solution:
         flag = False
         for i in range(len(arr)):
             if arr[i] == 0 and flag == False:
-                if arr[i-1] == 0:
+                if arr[i+1] == 0:
                     continue
                 else:
                     flag = True
