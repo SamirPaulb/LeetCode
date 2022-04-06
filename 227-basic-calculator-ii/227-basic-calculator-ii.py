@@ -7,14 +7,14 @@ class Solution:
         i = 0
         while i < n:
             if s[i].isdigit():
-                num = (s[i])
+                num = s[i]
                 i += 1
                 while i < n and s[i].isdigit():
                     num += s[i]
                     i += 1
                 i -= 1
                 num = int(num)
-                print(num)
+                
                 if sign == '+':
                     stack.append(num)
                 elif sign == '-':
@@ -23,9 +23,11 @@ class Solution:
                     newNum = stack.pop() * num
                     stack.append(newNum)
                 elif sign == '/':
-                    newNum = int(stack.pop() / num)
+                    newNum = math.trunc(stack.pop() / num)
+                    # or can use newNum = int(stack.pop() / num)
+                    # for negative numbers // will not work
                     stack.append(newNum)
-                    print(newNum)
+                
             elif s[i] != ' ':
                 sign = s[i]
             i += 1
