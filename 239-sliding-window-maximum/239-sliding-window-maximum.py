@@ -3,16 +3,17 @@ class Solution:
         q = collections.deque()
         res = []
         
-        for i, ch in enumerate(nums):
-            if q and i-q[0] >= k:
+        for i in range(len(nums)):
+            while q and nums[i] >= nums[q[-1]]:
+                q.pop()
+                
+            if q and i - q[0] >= k:
                 q.popleft()
                 
-            while q and nums[q[-1]] < ch:
-                q.pop()
-            
             q.append(i)
             
-            if i >= k-1:
-                res.append(nums[q[0]])
+            if i >= k-1: res.append(nums[q[0]])
         
         return res
+            
+        
