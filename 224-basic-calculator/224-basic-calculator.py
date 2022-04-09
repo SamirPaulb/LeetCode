@@ -24,5 +24,7 @@ class Solution:
                 num = 0
         
         return res + sign * num
-                
+
+# Time: O(N)
+# Space: O(N)
                 
