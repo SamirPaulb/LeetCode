@@ -17,3 +17,6 @@ class Solution:
             res[i] = res[i] - i
         
         return res
+    
+# Time: O(N)   
+# Space: O(N) 
