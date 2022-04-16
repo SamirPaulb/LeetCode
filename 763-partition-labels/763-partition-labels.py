@@ -1,3 +1,5 @@
+# https://leetcode.com/problems/partition-labels/
+
 class Solution:
     def partitionLabels(self, s: str) -> List[int]:
         countDict = {}
@@ -24,3 +26,7 @@ class Solution:
             i = j + 1
         
         return res
+    
+    
+# Time: O(N)
+# Space: O(N)
