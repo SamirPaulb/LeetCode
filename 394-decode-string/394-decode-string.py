@@ -1,3 +1,5 @@
+# https://leetcode.com/problems/decode-string/
+
 class Solution:
     def decodeString(self, s: str) -> str:
         stack = []; curNum = 0; curString = ''
@@ -21,3 +23,6 @@ class Solution:
                 curString += ch
         
         return curString
+    
+# Time: O(N)
+# Space: O(N)
