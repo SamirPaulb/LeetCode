@@ -16,6 +16,5 @@ class StockSpanner:
         return res
 
 
-# Your StockSpanner object will be instantiated and called as such:
-# obj = StockSpanner()
-# param_1 = obj.next(price)
+# Time: O(N)
+# Space: O(N)
