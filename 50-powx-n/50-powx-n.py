@@ -3,10 +3,9 @@ class Solution:
         res = 1
         p = n
         if p < 0: p *= -1
-        
-        while p:
+        while p > 0:
             if p % 2 == 0:
-                x = x*x
+                x *= x
                 p /= 2
             else:
                 res *= x
