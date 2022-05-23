@@ -1,22 +1,31 @@
+# https://leetcode.com/problems/cheapest-flights-within-k-stops/
+
 class Solution:
     def findCheapestPrice(self, n: int, flights: List[List[int]], src: int, dst: int, k: int) -> int:
-        adjList = {i:[] for i in range(n)}
-        for f, t, p in flights:
-            adjList[f].append((t, p))
-            
-        visited = [2**31] * n
-        minHeap = [(0, src, -1)]  # (price, source, no. of stops)
-        res = 2**31
-        while minHeap:
-            price, stop, stopCount = heapq.heappop(minHeap)
+        #Make graph
+        adj_list = {i:[] for i in range(n)}
+        for frm, to, price in flights:
+            adj_list[frm].append((to, price))
         
-            if stopCount > k: continue
-            if stop == dst: return price
+        best_visited = [2**31]*n # Initialized to maximum
+        
+        prior_queue = [ (0, -1, src) ]  # weight, steps, node
+
+        while prior_queue:
+            cost, steps, node = heapq.heappop(prior_queue)
             
-            if visited[stop] <= stopCount: continue
-            visited[stop] = stopCount
+            if best_visited[node] <= steps:  # Have seen the node already, and the current steps are more than last time
+                continue
+
+            if steps > k:  # More than k stops, invalid
+                continue
+
+            if node==dst:  # reach the destination # as priority_queue is a minHeap so this cost is the most minimum cost.
+                return cost
             
-            for t, p in adjList[stop]:
-                heapq.heappush(minHeap, (price + p, t, stopCount + 1))
-                    
+            best_visited[node] = steps # Update steps
+
+            for neighb, weight in adj_list[node]:
+                heapq.heappush(prior_queue, (cost + weight, steps + 1, neighb))
+
         return -1
