@@ -1,9 +1,5 @@
-# Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, val=0, left=None, right=None):
-#         self.val = val
-#         self.left = left
-#         self.right = right
+# If some nodes of same horizontal level comes in same vertical level then
+# we should only sort those nodes.
 class Solution:
     def verticalTraversal(self, root: Optional[TreeNode]) -> List[List[int]]:
         self.dic = {}
@@ -24,8 +20,7 @@ class Solution:
         res = []
         for key in keys:
             values = self.dic[key]
-            values.sort()
-            #print(values)
+            values.sort()  # sorting is done based on level then for same level nodes based on values
             res.append([r[1] for r in values])
             
         return res
