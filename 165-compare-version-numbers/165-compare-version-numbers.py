@@ -13,3 +13,6 @@ class Solution:
             if v1_val < v2_val: return -1
             
         return 0
+    
+# Time: O(N)  ; as pop from deque is constant time
+# Space: O(N) ; for making v1 and v2
