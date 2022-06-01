@@ -1,7 +1,8 @@
+# Morris Traversal Inorder
+
 class Solution:
-    def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+    def inorderTraversal(self, root):
         res = []
-        
         cur = root
         
         while cur:
@@ -10,12 +11,17 @@ class Solution:
                 cur = cur.right
             else:
                 pre = cur.left
-                while pre and pre.right:
+                while pre.right and pre.right != cur:
                     pre = pre.right
-                pre.right = cur
-                # disconnecting the left pointer so that we will not return here again
-                tmp = cur.left
-                cur.left = None
-                cur = tmp
+                
+                if pre.right == None:
+                    pre.right = cur
+                    cur = cur.left
+                else:
+                    res.append(cur.val)
+                    cur = cur.right
                 
         return res
+    
+# Time: O(N)
+# Space: O(1)
