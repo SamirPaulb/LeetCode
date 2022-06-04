@@ -31,4 +31,4 @@ class Codec:
         return preorder()
     
 # Time: O(N)
-# Space: (N)
+# Space: O(N)
