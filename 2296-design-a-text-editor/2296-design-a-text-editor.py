@@ -37,7 +37,4 @@ class TextEditor:
         
         self.ptr = min(self.ptr + k, len(self.txt))  
             
-        if len(self.txt[:self.ptr]) >= len(self.txt[max(0, self.ptr - 10):self.ptr]):
-            return self.txt[max(0, self.ptr - 10):self.ptr]
-        else:
-            return self.txt[:self.ptr]
+        return self.txt[max(0, self.ptr - 10):self.ptr]
