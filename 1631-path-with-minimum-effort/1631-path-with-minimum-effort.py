@@ -1,6 +1,6 @@
 # https://youtu.be/FabSLaGu0NI
 
-# Method 1  --------- Using Dijkstra's Algorithm
+# Method 1  --------> using Dijkstra's Algorithm
 class Solution:
     def minimumEffortPath(self, heights: List[List[int]]) -> int:
         row = len(heights)
@@ -31,3 +31,12 @@ class Solution:
 
 # Time: O(r*c * log(r*c))
 # Space: O(r * c)
+
+
+'''
+# Method 2  --------> using Binary Search
+class Solution:
+    def minimumEffortPath(self, heights: List[List[int]]) -> int:
+    
+    
+'''
