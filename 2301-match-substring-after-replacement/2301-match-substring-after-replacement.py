@@ -17,3 +17,5 @@ class Solution:
         
         return False
     
+# Time: O(len(s) * len(sub))
+# Space: O(len(mapping))
