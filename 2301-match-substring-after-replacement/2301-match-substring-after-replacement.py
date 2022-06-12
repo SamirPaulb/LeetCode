@@ -9,13 +9,15 @@ class Solution:
         
         for i in range(len(s)-len(sub)+1):
             j = 0
-            while j < len(sub) and (s[i+j] == sub[j] or 
-                                    (sub[j] in dic and s[i+j] in dic[sub[j]])):
-                j += 1
-
+            while j < len(sub):
+                if s[i+j] == sub[j]:
+                    j += 1
+                else:
+                    if sub[j] in dic and s[i+j] in dic[sub[j]]:
+                        j += 1
+                    else:
+                        break
             if j == len(sub): return True
         
         return False
     
-# Time: O(len(s) * len(sub))
-# Space: O(len(mapping))
