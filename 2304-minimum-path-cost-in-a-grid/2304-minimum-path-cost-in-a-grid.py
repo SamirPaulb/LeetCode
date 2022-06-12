@@ -15,3 +15,7 @@ class Solution:
                 dp[i][j] = min(cost)
         
         return min(dp[-1])
+    
+    
+# Time: O(row * col * col)
+# Space: O(row * col)
