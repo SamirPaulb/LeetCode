@@ -7,7 +7,7 @@ class Solution:
         
         def helper(i, j):
             if (i,j) in memo: return memo[(i,j)]
-            path = 0
+            path = 1
             for move in directions:
                 r = i + move[0]
                 c = j + move[1]
@@ -16,9 +16,10 @@ class Solution:
                     
                     tmp = matrix[i][j]
                     matrix[i][j] = '#'
-                    path = max(path, helper(r, c))
+                    path = max(path, helper(r, c) + 1)
                     matrix[i][j] = tmp
-            memo[(i,j)] = path + 1
+                    
+            memo[(i,j)] = path 
             return memo[(i,j)]
         
         for i in range(row):
