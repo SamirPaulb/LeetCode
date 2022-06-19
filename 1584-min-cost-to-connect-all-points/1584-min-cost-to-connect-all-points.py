@@ -32,3 +32,8 @@ class Solution:
                     heapq.heappush(minHeap, dn)
         
         return res
+
+
+# V = number of umber of verices and E = numver of Edges in the graph.
+# Time: O(V^2) + O((V+E)logV) = O(V^2)
+# Space: O(V^2)  In worst cases all connections of undirected graph can be in minheap 
