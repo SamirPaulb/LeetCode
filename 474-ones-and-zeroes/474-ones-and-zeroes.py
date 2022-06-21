@@ -25,7 +25,9 @@ Time: O(l * m * n) - where l is length of strs
 Space: O(l * m * n) - memo hashmap
 '''
 
-'''
+
+
+
 # DP Tabulation (Bottom Up)
 class Solution:
     def findMaxForm(self, strs: List[str], m: int, n: int) -> int:
@@ -42,7 +44,6 @@ class Solution:
     
 
 '''
-#Time: O(l * m * n) - where l is length of strs
-#Space: O(m * n) - dp table
-'''
+Time: O(l * m * n) - where l is length of strs
+Space: O(m * n) - dp table
 '''
