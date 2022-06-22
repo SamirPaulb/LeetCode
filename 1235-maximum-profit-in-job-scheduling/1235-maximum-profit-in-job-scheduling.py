@@ -1,33 +1,40 @@
-class Solution:
-    def jobScheduling(self, startTime: List[int], endTime: List[int], profit: List[int]) -> int:
-        n = len(startTime)
-        jobs = []
-        for i in range(n):
-            jobs.append((startTime[i], endTime[i], profit[i]))
-        jobs.sort(key = lambda x:x[1])
-        
+class Solution(object):
+    def jobScheduling(self, startTime, endTime, profit):
+        """
+        :type startTime: List[int]
+        :type endTime: List[int]
+        :type profit: List[int]
+        :rtype: int
+        """
+        lst = sorted(zip(startTime, endTime, profit), key = lambda x: x[1])
         dpEndTime = [0]
         dpProfit = [0]
         
-        for start, end, profit in jobs:
-            idx = self.rightMostNonOverlapping(dpEndTime, start) - 1
+        for start, end, profit in lst:
+            # find rightMost idx to insert this start time
+            # idx is where this new start needs to be inserted
+            # idx - 1 is the one that doesn't overlap
+            idx = self.bSearch(dpEndTime, start)
             lastProfit = dpProfit[-1]
-            curProfit = dpProfit[idx] + profit
-            if lastProfit < curProfit:
+            currProfit = dpProfit[idx-1] + profit # they don't overlap
+            
+            # whener we find currProfit greater than last, we update
+            if currProfit > lastProfit:
                 dpEndTime.append(end)
-                dpProfit.append(curProfit)
+                dpProfit.append(currProfit)
         
         return dpProfit[-1]
+            
     
-    
-    def rightMostNonOverlapping(self, dpEndTime, start):
-        l = 0
-        r = len(dpEndTime) - 1
-        while l <= r:
-            mid = l + (r - l) // 2
-            if dpEndTime[mid] <= start:
-                l = mid + 1
-            else:
-                r = mid - 1
+    def bSearch(self, arr, target):  # right most element whose endTime <= current start time. 
+        left, right = 0, len(arr)-1
         
-        return l
+        while left <= right:
+            mid = left + (right - left) // 2
+            
+            if arr[mid] <= target:
+                left = mid + 1
+            else:
+                right = mid - 1
+        
+        return left
