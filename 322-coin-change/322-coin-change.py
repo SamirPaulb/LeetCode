@@ -17,5 +17,5 @@ class Solution:
                 else:
                     dp[i][j] = min(1 + dp[i][j - coins[i]], dp[i-1][j])
         
-        res = dp[row-1][col-1]
+        res = dp[-1][-1]
         return res if res != 2**31 else -1
