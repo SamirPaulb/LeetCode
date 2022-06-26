@@ -1,14 +1,14 @@
 class Solution:
-    def maximumsSplicedArray(self, A, B):
+    def maximumsSplicedArray(self, nums1: List[int], nums2: List[int]) -> int:
+        A = nums1
+        B = nums2
         def kadane(A, B):
-            # calculate how much B can earn by swaping a part of the array.
-            res = cur = 0
+            cur, res = 0, 0
             for i in range(len(A)):
-                # Once the element in A make the cur negative, reset cur to zero; else, update cur.
-                cur = max(0, cur + A[i] - B[i])
+                cur += A[i] - B[i]
                 res = max(res, cur)
-            # return the sum after swapping a part of the array.
-            return res + sum(B)
+                if cur < 0: cur = 0
+            return res
         
-        # We are not sure which array is bigger so that we have to do kadane() twice.
-        return max(kadane(A, B), kadane(B, A))
+        return max(sum(B) + kadane(A, B), sum(A) + kadane(B, A))
+    
