@@ -2,20 +2,25 @@ class Solution:
     def minPathCost(self, grid: List[List[int]], moveCost: List[List[int]]) -> int:
         row = len(grid)
         col = len(grid[0])
-        dp = [[0]*col for i in range(row)]
-        
-        for j in range(col):
-            dp[0][j] = grid[0][j]
+        dp = self.deepcopy(grid)
         
         for i in range(1, row):
             for j in range(col):
-                cost = [0]*col
+                val = 2**31
                 for k in range(col):
-                    cost[k] = grid[i][j] + moveCost[grid[i-1][k]][j] + dp[i-1][k]
-                dp[i][j] = min(cost)
+                    val = min(val, dp[i-1][k] + moveCost[grid[i-1][k]][j])
+                dp[i][j] += val
         
         return min(dp[-1])
     
     
-# Time: O(row * col * col)
-# Space: O(row * col)
+    def deepcopy(self, arr):
+        n = len(arr)
+        m = len(arr[0])
+        new_arr = [[0]*m for i in range(n)]
+        
+        for i in range(n):
+            for j in range(m):
+                new_arr[i][j] = arr[i][j]
+        
+        return new_arr
