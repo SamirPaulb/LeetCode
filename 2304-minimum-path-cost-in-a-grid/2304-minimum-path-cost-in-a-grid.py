@@ -2,7 +2,10 @@ class Solution:
     def minPathCost(self, grid: List[List[int]], moveCost: List[List[int]]) -> int:
         row = len(grid)
         col = len(grid[0])
-        dp = self.deepcopy(grid)
+        '''
+        NOTE: Incase of matrix (2-D Array) Python's matrix.copy() function Does NOT make a new copy of original matrix. So any change in new_matrix will cange in original matrix.
+        '''
+        dp = self.deepcopy(grid)  # Can NOT use, dp = grid.copy()  or  dp = grid[:]
         
         for i in range(1, row):
             for j in range(col):
