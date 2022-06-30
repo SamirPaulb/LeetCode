@@ -1,40 +1,26 @@
-class Solution(object):
-    def jobScheduling(self, startTime, endTime, profit):
-        """
-        :type startTime: List[int]
-        :type endTime: List[int]
-        :type profit: List[int]
-        :rtype: int
-        """
-        lst = sorted(zip(startTime, endTime, profit), key = lambda x: x[1])
+class Solution:
+    def jobScheduling(self, startTime: List[int], endTime: List[int], profit: List[int]) -> int:
+        n = len(startTime)
+        arr = [(startTime[i], endTime[i], profit[i]) for i in range(n)]
+        arr.sort(key = lambda x:x[1])
+        
         dpEndTime = [0]
         dpProfit = [0]
-        
-        for start, end, profit in lst:
-            # find rightMost idx to insert this start time
-            # idx is where this new start needs to be inserted
-            # idx - 1 is the one that doesn't overlap
-            idx = self.bSearch(dpEndTime, start)
-            lastProfit = dpProfit[-1]
-            currProfit = dpProfit[idx-1] + profit # they don't overlap
-            
-            # whener we find currProfit greater than last, we update
-            if currProfit > lastProfit:
+        for start, end, profit in arr:
+            indx = self.bsRightMost(dpEndTime, start)
+            prevProfit = dpProfit[-1]
+            curProfit = dpProfit[indx-1] + profit
+            if curProfit > prevProfit:
                 dpEndTime.append(end)
-                dpProfit.append(currProfit)
-        
+                dpProfit.append(curProfit)
         return dpProfit[-1]
-            
     
-    def bSearch(self, arr, target):  # right most element whose endTime <= current start time. 
-        left, right = 0, len(arr)-1
-        
-        while left <= right:
-            mid = left + (right - left) // 2
-            
-            if arr[mid] <= target:
-                left = mid + 1
+    def bsRightMost(self, nums, target):
+        l = 0; r = len(nums)-1
+        while l <= r:
+            mid = l + (r - l) // 2
+            if nums[mid] > target:
+                r = mid - 1
             else:
-                right = mid - 1
-        
-        return left
+                l = mid + 1
+        return l
