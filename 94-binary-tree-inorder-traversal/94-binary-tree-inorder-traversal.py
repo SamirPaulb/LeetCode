@@ -1,27 +1,10 @@
-# Morris Traversal Inorder
-
 class Solution:
-    def inorderTraversal(self, root):
+    def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
         res = []
-        cur = root
-        
-        while cur:
-            if not cur.left:
-                res.append(cur.val)
-                cur = cur.right
-            else:
-                pre = cur.left
-                while pre.right and pre.right != cur:
-                    pre = pre.right
-                
-                if pre.right == None:
-                    pre.right = cur
-                    cur = cur.left
-                else:
-                    res.append(cur.val)
-                    cur = cur.right
-                
+        def inorder(root):
+            if not root: return
+            inorder(root.left)
+            res.append(root.val)
+            inorder(root.right)
+        inorder(root)
         return res
-    
-# Time: O(N)
-# Space: O(1)
