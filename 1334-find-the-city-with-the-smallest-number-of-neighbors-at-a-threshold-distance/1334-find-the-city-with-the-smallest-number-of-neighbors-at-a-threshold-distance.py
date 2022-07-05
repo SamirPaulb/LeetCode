@@ -1,41 +1,28 @@
-# https://leetcode.com/problems/find-the-city-with-the-smallest-number-of-neighbors-at-a-threshold-distance/
-# Floyd Warshall Algorithm 
-
 class Solution:
-    def findTheCity(self, n, edges, distanceThreshold):
-        dist = [[float('inf')]*n for i in range(n)]  # dist matrix for Dynamic Programming
-        for f, t, w in edges:
-            dist[f][t] = w
-            dist[t][f] = w
+    def findTheCity(self, n: int, edges: List[List[int]], distanceThreshold: int) -> int:
+        dp = [[2**31]*n for i in range(n)]
+        for u, v, w in edges:
+            dp[u][v] = w
+            dp[v][u] = w
         
         for k in range(n):
             for i in range(n):
                 for j in range(n):
-                    if i == j:    # distance of itself is 0
-                        dist[i][j] = 0
+                    if i == j: 
+                        dp[i][j] = 0
                     else:
-                        dist[i][j] = min(dist[i][j], dist[i][k] + dist[k][j])
-                    
-        min_reach = n
+                        dp[i][j] = min(dp[i][j], dp[i][k] + dp[k][j])
+        
         res = 0
+        min_reach = n
         for i in range(n):
             i_reach = 0
             for j in range(n):
-                if dist[i][j] <= distanceThreshold:
+                if dp[i][j] <= distanceThreshold:
                     i_reach += 1
-            if i_reach <= min_reach:  # incase of equal, return city with max value
+            print(i_reach)
+            if i_reach <= min_reach:
                 res = i
                 min_reach = i_reach
         
         return res
-    
-# Time: O(N^3)
-# Space: O(N^2)
-
-
-
-
-# Method 2:
-'''
-we can use Dijkstra's Shortest Path Algorithm for each node to find sortest path to each node. But time complexity would be O(N^3 log(N)) for using that minHeap
-'''
