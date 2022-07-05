@@ -1,42 +1,18 @@
-# https://youtu.be/FabSLaGu0NI
-
-# Method 1  --------> using Dijkstra's Algorithm
 class Solution:
     def minimumEffortPath(self, heights: List[List[int]]) -> int:
-        row = len(heights)
-        col = len(heights[0])
+        row = len(heights); col = len(heights[0])
+        visited = [[False]*col for i in range(row)]
         
-        minHeap = []
-        heapq.heappush(minHeap, (0, 0, 0))  # (distance, row, col)
+        moves = [(-1, 0), (1, 0), (0, -1), (0, 1)]
+        minheap = [(0, 0, 0)] # dist, row, col
+        while minheap:
+            eff, i, j = heapq.heappop(minheap)
+            if visited[i][j]: continue
+            visited[i][j] = True
+            if i == row-1 and j == col-1: return eff
+            for m in moves:
+                r = i + m[0]; c = j + m[1]
+                if 0 <= r < row and 0 <= c < col and not visited[r][c]:
+                    diff = max(eff, abs(heights[r][c] - heights[i][j]))
+                    heapq.heappush(minheap, (diff, r, c))
         
-        directions = [(-1, 0), (1, 0), (0, -1), (0, 1)]
-        visited = set()
-        dp = [[2**31]*col for i in range(row)]
-        
-        while minHeap:
-            d, r, c = heapq.heappop(minHeap)
-            if (r, c) in visited: continue
-            visited.add((r,c))
-            dp[r][c] = d
-            if r == row-1 and c == col-1: return dp[r][c]    
-            for direc in directions:
-                nr = r + direc[0]
-                nc = c + direc[1]
-                if 0 <= nr < row and 0 <= nc < col:
-                    nd = max(dp[r][c], abs(heights[r][c] - heights[nr][nc]))
-                    if nd < dp[nr][nc]:
-                        heapq.heappush(minHeap, (nd, nr, nc))
-        
-        return 0
-
-# Time: O(r*c * log(r*c))
-# Space: O(r * c)
-
-
-'''
-# Method 2  --------> using Binary Search
-class Solution:
-    def minimumEffortPath(self, heights: List[List[int]]) -> int:
-    
-    
-'''
