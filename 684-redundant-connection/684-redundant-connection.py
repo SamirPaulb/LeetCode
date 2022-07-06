@@ -1,21 +1,20 @@
 class Solution:
     def findRedundantConnection(self, edges: List[List[int]]) -> List[int]:
-        n = len(edges)
-        parent = {i:i for i in range(1, n+1)}
+        n = len(edges) + 1
+        parent = {i:i for i in range(1, n)}
         
-        def find(node):
-            while parent[node] != node:
-                node = parent[node]
-            return node
+        def find(a):
+            while parent[a] != a:
+                a = parent[a]
+            return a
         
-        def union(i, j):
-            iRoot = find(i)
-            jRoot = find(j)
-            parent[jRoot] = parent[iRoot]
-            
-        for edge in edges:
-            if find(edge[0]) == find(edge[1]): return edge
-            union(edge[0], edge[1])
+        def union(a, b):
+            aRoot = find(a)
+            bRoot = find(b)
+            if aRoot == bRoot:
+                return [a, b]
+            else:
+                parent[bRoot] = aRoot
         
-# Time: O(N)  ;as the while loop in find() function will run at max 2 time
-# Space: O(N)  ;as for taking parent dictionary
+        for a, b in edges:
+            if union(a, b): return union(a, b)
