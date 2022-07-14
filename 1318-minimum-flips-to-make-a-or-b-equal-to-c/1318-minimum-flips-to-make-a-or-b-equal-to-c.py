@@ -1,7 +1,7 @@
 class Solution:
     def minFlips(self, a: int, b: int, c: int) -> int:
         res = 0
-        while a or b or c:
+        for i in range(32):
             if (a & 1) | (b & 1) != (c & 1):
                 if (c & 1) == 1:  # (a & 1) | (b & 1) should be == 1 ; so changing any of a, b we can get 1
                     res += 1      
