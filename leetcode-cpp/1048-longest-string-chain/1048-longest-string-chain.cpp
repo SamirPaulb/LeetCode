@@ -42,7 +42,7 @@ public:
             if(!vis[x]){
                 c=max(c, dfs(x)+1);
             }
-            //cout<<x<<" ";
+            
         }
         return c;
     }
@@ -69,7 +69,7 @@ public:
         for(int i=0;i<n;i++){
             memset(vis,0,sizeof(vis));
             ans=max(ans, dfs(i));
-            cout<<endl;
+            cout<<"\n";
         }
         for(auto x: adj[3])
             cout<<x;
