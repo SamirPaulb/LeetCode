@@ -20,11 +20,11 @@ class Solution:
             maxi = max(maxi, matrix[i][-1])
             
         l = mini; r = maxi
-        while l < r:
+        while l <= r:
             mid = l + (r - l) // 2
             if isValid(mid):
                 l = mid + 1
             else: 
-                r = mid
+                r = mid - 1
                 
         return l
