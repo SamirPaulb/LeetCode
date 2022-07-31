@@ -7,7 +7,7 @@ class Solution:
             res += 1
         if self.subStr(a, b):
             return res
-        if self.subStr(a+a, b):
+        if self.subStr(a+tmp, b):
             return res + 1
         return -1
     
