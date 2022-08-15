@@ -45,3 +45,6 @@ class Solution:
                     dp[ch] %= MOD
         
         return sum(dp.values()) % MOD
+    
+# Time: O(N^2)
+# Space: O(N)
