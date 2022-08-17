@@ -2,7 +2,7 @@ class Solution:
     def numDistinct(self, s: str, t: str) -> int:
         dp = [[0] * (len(s)+1) for _ in range(len(t)+1)]
         
-        # 0th row => len(t) == 0 and len(s) can be anything. So empty string (t) can be Subsequences of s
+        # 0th row => len(t) == 0 and len(s) can be anything. So empty string t can be Subsequence of s
         for j in range(len(s)+1):
             dp[0][j] = 1
         
