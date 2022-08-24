@@ -3,30 +3,31 @@
 
 class Solution:
     def minWindow(self, s: str, t: str) -> str:
-        tDict = {i:0 for i in t}
-        for i in t: tDict[i] += 1
-        sDict = {i:0 for i in t}
+        tCount, sWindow = {}, {}
+        for c in t:
+            tCount[c] = 1 + tCount.get(c, 0)   # if c present in tCount get its count else 0
 
-        have = 0
-        need = len(tDict.keys())
-        res = s*30
+        have = 0; need = len(tCount)
+        res = ""; resLen = 2**31
         l, r = 0, 0
         while r < len(s):
-            if s[r] in sDict:
-                sDict[s[r]] += 1
-                if sDict[s[r]] == tDict[s[r]]:
+            c = s[r]
+            if c in tCount:
+                sWindow[c] = 1 + sWindow.get(c, 0)
+                if sWindow[c] == tCount[c]:
                     have += 1
             r += 1
-            while l < r and have == need:
-                if s[l] in sDict:
-                    if r - l < len(res):
+            while have == need:
+                if s[l] in sWindow:
+                    if r - l < resLen:
                         res = s[l : r]
-                    sDict[s[l]] -= 1
-                    if sDict[s[l]] < tDict[s[l]]: 
+                        resLen = r - l
+                    sWindow[s[l]] -= 1
+                    if sWindow[s[l]] < tCount[s[l]]: 
                         have -= 1
                 l += 1
         
-        return res if res != s*30 else ""
+        return res if resLen != 2**31 else ""
         
                 
             
