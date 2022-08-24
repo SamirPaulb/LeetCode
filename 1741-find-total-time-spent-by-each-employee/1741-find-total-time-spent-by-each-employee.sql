@@ -4,4 +4,4 @@ SELECT
     emp_id,
     SUM(out_time - in_time) AS total_time
     FROM Employees
-    GROUP BY 1, 2;
+    GROUP BY day, emp_id;
