@@ -1,6 +1,6 @@
 class Solution:
     def countSubstrings(self, s: str) -> int:
-        def getPalCount(l, r):
+        def getPalCounts(l, r):
             count = 0
             while l >= 0 and r < len(s) and s[l] == s[r]:
                 count += 1
@@ -10,6 +10,11 @@ class Solution:
         
         res = 0
         for i in range(len(s)):
-            res += getPalCount(i, i) + getPalCount(i, i+1)
+            res += getPalCounts(i, i)    # for palindromes of odd length
+            res += getPalCounts(i, i+1)  # for palindromes of even length
         
         return res
+    
+    
+# Time: O(N^2)
+# Space: O(1)
