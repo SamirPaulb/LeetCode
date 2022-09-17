@@ -6,11 +6,11 @@ class Solution:
         bm = (int(arriveBob[:2]), int(leaveBob[:2]))
         bd = (int(arriveBob[3:]), int(leaveBob[3:]))
         
-        print(am, ad, bm, bd)
+        # print(am, ad, bm, bd)
         
         start_month = max(am[0], bm[0])
         end_month = min(am[1], bm[1])
-        print(start_month, end_month)
+        # print(start_month, end_month)
         if start_month == end_month:
             if am[0] == bm[0] == start_month:
                 ans = min(ad[1], bd[1]) - max(ad[0], bd[0]) + 1
@@ -20,7 +20,7 @@ class Solution:
                 ans = min(ad[1], bd[1]) - bd[0] + 1 
             else:
                 ans = min(ad[1], bd[1]) - max(ad[0], bd[0]) + 1
-            print(ad[1], bd[1], ad[0], bd[0])
+            # print(ad[1], bd[1], ad[0], bd[0])
             return ans if ans > 0 else 0
         
         res = 0
