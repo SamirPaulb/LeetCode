@@ -13,14 +13,14 @@ class Solution:
                 while i < len(path) and path[i] != '/':
                     cur += path[i]
                     i += 1
-            if cur == '..':
+                    
+            if cur == '..': 
                 if stack: stack.pop()
-            elif cur[0] != '/' and cur != '.':
+            elif cur[0] != '/' and cur != '.': 
                 stack.append(cur)
         
         res = ''
-        for s in stack:
-            res += '/' + s
+        for s in stack: res += '/' + s
             
         return res if res else '/'
 
