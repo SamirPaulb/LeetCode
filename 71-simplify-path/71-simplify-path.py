@@ -13,7 +13,6 @@ class Solution:
                 while i < len(path) and path[i] != '/':
                     cur += path[i]
                     i += 1
-            # print(stack, cur)
             if cur == '..':
                 if stack: stack.pop()
             elif cur[0] != '/' and cur != '.':
@@ -22,12 +21,14 @@ class Solution:
         res = ''
         for s in stack:
             res += '/' + s
-        # print(stack)
-        if not res: return '/'
-        return res
             
-        
-'''
+        return res if res else '/'
+
+    
+    
+    
+'''Test Cases:
+
 "/home/"
 "/../"
 "/home//foo/"
@@ -37,4 +38,3 @@ class Solution:
 "/..hidden"
 "/a/../../b/../c//.//"
 '''
-        
