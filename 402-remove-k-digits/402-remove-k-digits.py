@@ -3,7 +3,7 @@
 
 class Solution:
     def removeKdigits(self, num: str, k: int) -> str:
-        # Implement Monotonic Stack (Strictly Increasing)
+        # Implement Monotonic Stack (Increasing Order)
         monoStack = []
         for i in num:
             while monoStack and monoStack[-1] > i and k > 0:
