@@ -9,8 +9,8 @@ class Solution:
             else:
                 pre = nums[i]
                 c = 1
-                
-        print(nums)
+        # print(nums)
+        
         l = r = 0
         while l < len(nums):
             while l < len(nums) and nums[l] != '_':
