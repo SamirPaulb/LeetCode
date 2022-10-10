@@ -11,8 +11,7 @@ class Node:
 class Solution:
     def connect(self, root: 'Node') -> 'Node':
         if not root: return None
-        q = collections.deque()
-        q.append(root)
+        q = collections.deque([root])
         
         while q:
             n = len(q)
