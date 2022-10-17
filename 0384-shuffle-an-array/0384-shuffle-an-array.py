@@ -1,4 +1,4 @@
-import math
+import random
 
 class Solution:
 
@@ -12,7 +12,7 @@ class Solution:
         copyNums = self.nums.copy()
         n = len(self.nums)
         for i in range(n):
-            j = randint(i, n-1)
+            j = random.randint(i, n-1)
             copyNums[i], copyNums[j] = copyNums[j], copyNums[i]
         return copyNums
     
