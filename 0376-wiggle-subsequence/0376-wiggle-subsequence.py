@@ -10,12 +10,11 @@ class Solution:
             stack.append(nums[i])
             
         for num in nums[i+1:]:
+            if num == stack[-1]: continue
             if flag == 1:
-                if num == stack[-1]: continue
                 if num > stack[-1]: stack.pop()
                 else: flag *= -1
             else:
-                if num == stack[-1]: continue
                 if num < stack[-1]: stack.pop()
                 else: flag *= -1
             stack.append(num)
