@@ -14,11 +14,10 @@ class Solution:
                 if num == stack[-1]: continue
                 if num > stack[-1]: stack.pop()
                 else: flag *= -1
-                stack.append(num)
             else:
                 if num == stack[-1]: continue
                 if num < stack[-1]: stack.pop()
                 else: flag *= -1
-                stack.append(num)
+            stack.append(num)
         
         return len(stack)
