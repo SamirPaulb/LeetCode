@@ -22,3 +22,8 @@ class Solution:
             if n > t: res += n - t
         
         return res//2
+    
+    
+    
+# Time: O(N log(N))
+# Space: O(N)
