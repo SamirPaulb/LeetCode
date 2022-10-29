@@ -7,5 +7,4 @@ class Solution:
             while n % p == 0:
                 n = n // p
                 
-        if n == 1: return True
-        return False
+        return n == 1
