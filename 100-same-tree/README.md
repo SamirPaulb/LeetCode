@@ -2,7 +2,8 @@
 
 <p>Two binary trees are considered the same if they are structurally identical, and the nodes have the same value.</p>
 
-<p>&nbsp;</p>
+<br/>
+
 <p><strong>Example 1:</strong></p>
 <img alt="" src="https://assets.leetcode.com/uploads/2020/12/20/ex1.jpg" style="width: 622px; height: 182px;">
 <pre><strong>Input:</strong> p = [1,2,3], q = [1,2,3]
