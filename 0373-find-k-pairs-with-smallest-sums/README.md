@@ -1,4 +1,4 @@
-<h2><a href="https://leetcode.com/problems/find-k-pairs-with-smallest-sums/">373. Find K Pairs with Smallest Sums</a></h2><h3>Medium</h3><hr><div><p>You are given two integer arrays <code>nums1</code> and <code>nums2</code> sorted in <strong>ascending order</strong> and an integer <code>k</code>.</p>
+<h3><a href="https://leetcode.com/problems/find-k-pairs-with-smallest-sums/">373. Find K Pairs with Smallest Sums</a></h3><h3>Medium</h3><hr><div><p>You are given two integer arrays <code>nums1</code> and <code>nums2</code> sorted in <strong>ascending order</strong> and an integer <code>k</code>.</p>
 
 <p>Define a pair <code>(u, v)</code> which consists of one element from the first array and one element from the second array.</p>
 
@@ -24,6 +24,7 @@
 <pre><strong>Input:</strong> nums1 = [1,2], nums2 = [3], k = 3
 <strong>Output:</strong> [[1,3],[2,3]]
 <strong>Explanation:</strong> All possible pairs are returned from the sequence: [1,3],[2,3]
+
 </pre>
 
 <p>&nbsp;</p>
