@@ -7,7 +7,7 @@ class Solution:
             if start >= end: return 0
             ans = 2**31
             if dp[start][end] != -1: return dp[start][end]
-            for i in range(start, end+1):
+            for i in range(start, end):
                 ans = min(ans, i + max(solve(start, i-1), solve(i+1, end)))
             dp[start][end] = ans
             return ans
