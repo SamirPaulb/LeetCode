@@ -1,3 +1,5 @@
+# https://leetcode.com/problems/brick-wall/
+
 class Solution:
     def leastBricks(self, wall: List[List[int]]) -> int:
         n = len(wall)
@@ -8,8 +10,8 @@ class Solution:
             i = 0
             for j in w[:-1]:
                 i += j
-                if i in dct: dct[i] -= 1
-                else: dct[i] = n - 1
+                if i not in dct: dct[i] = n-1
+                else: dct[i] -= 1
                     
         # print(dct)
         return min(list(dct.values()))
