@@ -1,3 +1,5 @@
+# https://youtu.be/q5ANAl8Z458
+
 class Solution:
     def find132pattern(self, nums: List[int]) -> bool:
         curMin = nums[0]
