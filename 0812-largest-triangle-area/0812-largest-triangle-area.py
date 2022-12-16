@@ -1,3 +1,5 @@
+# https://www.vedantu.com/question-answer/find-the-area-of-the-triangle-whose-vertices-are-class-11-maths-cbse-5f8309d2ed668270c0bf8f07
+
 class Solution:
     def largestTriangleArea(self, points: List[List[int]]) -> float:
         n = len(points)
