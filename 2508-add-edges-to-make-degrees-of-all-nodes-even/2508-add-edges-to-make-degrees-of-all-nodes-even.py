@@ -50,3 +50,11 @@ class Solution:
                    noLink(a, d) and noLink(b, c)
         
         return len(odd) == 0
+    
+    
+'''
+Complexity
+
+Time: O(edges)
+Space: O(edges)
+'''
