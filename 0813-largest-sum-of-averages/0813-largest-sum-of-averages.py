@@ -15,3 +15,7 @@ class Solution:
             return ans
         
         return dfs(0, k)
+    
+    
+# Time: O(N * K)
+# Space: O(N * K)
