@@ -1,6 +1,7 @@
 class Solution:
     def largestSumOfAverages(self, nums: List[int], k: int) -> float:
         dp = [[-1] * (k+1) for i in range(len(nums))]
+        
         def dfs(i, k):
             if i >= len(nums) or k < 0: return 0
             if k == 0: return -2**31
