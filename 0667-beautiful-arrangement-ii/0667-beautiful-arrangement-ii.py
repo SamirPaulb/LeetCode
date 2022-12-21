@@ -16,3 +16,6 @@ class Solution:
             k -= 1
         
         return res + list(numset)
+    
+# Time: O(K)
+# Space: O(N)
