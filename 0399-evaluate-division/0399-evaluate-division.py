@@ -15,17 +15,18 @@ class Solution:
         for a,b in queries:
             if a not in adjList or b not in adjList: res.append(-1); continue
             if a == b: res.append(1); continue
-            minHeap = [(1,a)]
+            q = collections.deque()
+            q.append((1,a))
             visited = set()
             got = False
-            while minHeap:
-                v,c = heapq.heappop(minHeap)
+            while q:
+                v,c = q.popleft()
                 if c in visited: continue
                 if c == b: res.append(v); got = True; break
                 visited.add(c)
                 addtoadjlist(a,c,v)
                 for nc, nv in adjList[c]:
-                    heapq.heappush(minHeap, (v*nv, nc))
+                    q.append((v*nv, nc))
             if not got: res.append(-1)
         # print(adjList)
         return res
