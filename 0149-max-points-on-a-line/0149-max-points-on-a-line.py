@@ -5,11 +5,11 @@ class Solution:
             slopDict = {}
             for j in range(len(points)):
                 if i == j: continue
-                elif points[i][0] == points[j][0]:
-                    if "inf" not in slopDict: slopDict["inf"] = 2
-                    else: slopDict["inf"] += 1
                 else:
-                    slop = (points[j][1] - points[i][1]) / (points[j][0] - points[i][0])
+                    if points[i][0] == points[j][0]:
+                        slop = "inf"
+                    else:
+                        slop = (points[j][1] - points[i][1]) / (points[j][0] - points[i][0])
                     if slop not in slopDict: slopDict[slop] = 2
                     else: slopDict[slop] += 1
                         
