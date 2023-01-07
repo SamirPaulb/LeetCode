@@ -6,7 +6,13 @@ class Solution:
             if not LIS or h > LIS[-1]:
                 LIS.append(h)
             else:
-                left = bisect.bisect_left(LIS, h)
-                LIS[left] = h
+                l,r = 0, len(LIS)
+                while l <= r:
+                    mid = l + (r - l)//2
+                    if LIS[mid] < h:
+                        l = mid + 1
+                    else:
+                        r = mid - 1
+                LIS[l] = h
         
         return len(LIS)
