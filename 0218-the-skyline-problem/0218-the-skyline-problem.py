@@ -11,14 +11,15 @@ class Solution:
         corners.sort()
         print(corners)
         # as heapq does not support delete element by value. 
-        removed = []
+        removed = collections.Counter()
         maxHeap = [0]
         res = []
         
         def getMaxHeight():
             mh = - maxHeap[0]  # max height
             while mh in removed:
-                removed.remove(mh)
+                removed[mh] -= 1
+                if removed[mh] == 0: del removed[mh]
                 heapq.heappop(maxHeap)
                 mh = - maxHeap[0]
             return mh
@@ -31,7 +32,7 @@ class Solution:
                 heapq.heappush(maxHeap, y)
             else:
                 ph = mh
-                removed.append(y)
+                removed[y] += 1
                 if y == mh:
                     mh = getMaxHeight()
                     if ph > mh: res.append([x, mh])
