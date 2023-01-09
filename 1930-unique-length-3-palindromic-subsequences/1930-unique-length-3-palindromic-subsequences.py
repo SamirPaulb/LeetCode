@@ -9,8 +9,8 @@ so we only need to check how many unique characters are there between first and 
 class Solution:
     def countPalindromicSubsequence(self, s):
         res = 0
-        for c in string.ascii_lowercase:
-            l = s.find(c)   # first occurance
+        for c in string.ascii_lowercase:  # Time: O(26)
+            l = s.find(c)   # first occurance  # Time: O(N)
             r = s.rfind(c)  # last occurance
             if l > -1:
                 res += len(set(s[l+1:r]))  # count of unique element in middle
