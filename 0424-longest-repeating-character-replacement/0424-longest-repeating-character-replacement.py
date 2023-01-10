@@ -1,3 +1,13 @@
+# https://leetcode.com/problems/longest-repeating-character-replacement/
+
+'''Intuition:
+- Scan the array with 2 pointers: left and right
+- Store the frequency of each character
+- Compute the replacement cost: cells count between left and right pointers - the highest frequency
+- if the replacement cost <= k: update longest string size
+- if the replacement cost > k: decrease frequency of character at left pointer; increase left pointer and repeat.
+'''
+
 class Solution:
     def characterReplacement(self, s, k):
         maxFreq = 1
@@ -15,3 +25,8 @@ class Solution:
                 l += 1
         
         return res
+    
+    
+    
+# Time: O(N)
+# Space: O(N)
