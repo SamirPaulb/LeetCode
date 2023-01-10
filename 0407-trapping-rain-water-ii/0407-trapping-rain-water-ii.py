@@ -1,3 +1,4 @@
+# https://leetcode.com/problems/trapping-rain-water-ii/
 # https://youtu.be/QvQiQcLCQ4Y
 
 import heapq
@@ -14,7 +15,7 @@ class Solution:
                     visited[i][j] = True
         
         res = 0
-        minBdH = 0  # Min Boundary Height
+        minBdH = 0  # Minimum Boundary Height
         while minHeap:
             h, i, j = heapq.heappop(minHeap)
             minBdH = max(minBdH, h)
@@ -27,3 +28,8 @@ class Solution:
                         res += minBdH - heightMap[r][c]
         
         return res
+    
+    
+    
+# Time: O(m*n * log(m*n))
+# Space: O(m*n)
