@@ -9,7 +9,4 @@ class Solution:
                     o -= 1
         
         if o in (0, 1): return o
-        if o%2 == 0:
-            return o//2
-        else:
-            return o//2 + 1
+        return (o+1)//2
