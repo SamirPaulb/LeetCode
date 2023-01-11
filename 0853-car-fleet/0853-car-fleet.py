@@ -2,10 +2,7 @@ class Solution:
     def carFleet(self, target, position, speed):
         ps = [(p,s) for p,s in zip(position, speed)]
         ps.sort()
-        time = []
-        for p, s in ps:
-            t = (target - p) / s
-            time.append(t)
+        time = [(target-p)/s for p,s in ps]
         # print(time)
         rmax = res = 0
         for t in time[::-1]:
