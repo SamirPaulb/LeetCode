@@ -43,7 +43,6 @@ class FreqStack:
     def pop(self):
         # print(self.stackDict)
         if not self.stackDict[self.maxcnt]:
-            del self.stackDict[self.maxcnt]
             self.maxcnt -= 1
         val = self.stackDict[self.maxcnt].pop()
         self.cnt[val] -= 1
