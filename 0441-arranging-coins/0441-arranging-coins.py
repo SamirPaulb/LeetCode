@@ -1,11 +1,13 @@
 # https://leetcode.com/problems/arranging-coins/
 # https://samirpaulb.github.io/assets/arranging-coins-leetcode.png
 
+# ---------- MATH - Time: O(1) ----------
+class Solution:
+    def arrangeCoins(self, n):
+        return int((2*n + 1/4)**(1/2) - 1/2)
 
-# class Solution:
-#     def arrangeCoins(self, n):
-#         return int((2*n + 1/4)**(1/2) - 1/2)
-
+    
+# ---------- BINARY SEARCH - Time: O(log(N)) ----------
 class Solution:
     def arrangeCoins(self, n):
         res = 0
@@ -17,5 +19,4 @@ class Solution:
                 l = mid + 1
             else:
                 r = mid - 1
-        
         return res
