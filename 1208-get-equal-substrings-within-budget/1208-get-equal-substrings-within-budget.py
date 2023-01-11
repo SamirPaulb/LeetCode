@@ -1,5 +1,5 @@
 class Solution:
-    def equalSubstring(self, s: str, t: str, maxCost: int) -> int:
+    def equalSubstring(self, s, t, maxCost):
         costs = []
         for i in range(len(s)):
             costs.append(abs(ord(s[i]) - ord(t[i])))
