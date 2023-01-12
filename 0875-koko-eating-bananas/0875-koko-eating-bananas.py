@@ -6,7 +6,7 @@ class Solution:
                 time += math.ceil(num/speed)
             return time <= h
         
-        l, r, res = 1, sum(piles), sum(piles)
+        l, r, res = 1, max(piles), max(piles)
         while l <= r:
             mid = l + (r-l)//2
             if valid(mid):
