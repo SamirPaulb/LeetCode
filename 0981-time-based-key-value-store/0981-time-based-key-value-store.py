@@ -12,7 +12,6 @@ class TimeMap:
     def get(self, key, timestamp):
         if key not in self.dic: return ""
         arr = self.dic[key]
-        # print(arr)
         l, r = 0, len(arr)-1
         i = 0
         while l < r:
@@ -22,5 +21,4 @@ class TimeMap:
             else:
                 l = mid
                 
-        curTime = arr[l][0]
-        return arr[l][1] if timestamp >= curTime else ""
+        return arr[l][1] if timestamp >= arr[l][0] else ""
