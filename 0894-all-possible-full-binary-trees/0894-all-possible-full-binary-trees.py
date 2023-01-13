@@ -1,3 +1,14 @@
+# https://leetcode.com/problems/all-possible-full-binary-trees/
+# https://youtu.be/nZtrZPTTCAo
+'''
+Eg. N == 9
+
+left sub-tree can have 1 node and right sub-tree can have 7 nodes
+left sub-tree can have 3 node and right sub-tree can have 5 node
+left sub-tree can have 5 node and right sub-tree can have 3 node
+left sub-tree can have 7 node and right sub-tree can have 1 node
+'''
+
 # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, val=0, left=None, right=None):
