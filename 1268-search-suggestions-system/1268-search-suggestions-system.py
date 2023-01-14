@@ -4,6 +4,7 @@ class Node:
         self.children = {}
         self.suggestions  = []
 
+        
 class Trie:
     def __init__(self):
         self.root = Node()
@@ -38,3 +39,8 @@ class Solution:
         for word in products:
             trie.addWord(word)
         return trie.getSuggestions(searchWord)
+    
+    
+    
+# Time: O(N log(N)) + O(N * K) ; where N = len(products), K = len(searchWord)
+# Space: O(N)
