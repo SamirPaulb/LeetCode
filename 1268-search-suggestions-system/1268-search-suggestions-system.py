@@ -1,46 +1,45 @@
-class Node:
+class TrieNode:
     def __init__(self):
-        self.val = ""
         self.children = {}
-        self.suggestions  = []
+        self.isWord = False
+        self.val = "-"
 
-        
-class Trie:
+class Solution:
     def __init__(self):
-        self.root = Node()
-    
+        self.root = TrieNode()
+        
     def addWord(self, word):
         cur = self.root
         for c in word:
             if c not in cur.children:
-                cur.children[c] = Node()
+                cur.children[c] = TrieNode()
             cur = cur.children[c]
             cur.val = c
-            if len(cur.suggestions) < 3:
-                cur.suggestions.append(word)
+        cur.isWord = True
     
-    def getSuggestions(self, searchWord):
+    def suggestedProducts(self, products: List[str], searchWord: str) -> List[List[str]]:
+        products.sort()
+        for pd in products:
+            self.addWord(pd)
+        
+        def dfs(cur, arr, tmp):
+            if len(arr) == 3 or not cur: return 
+            if cur.isWord: 
+                arr.append(tmp)
+            for child in cur.children.values():
+                dfs(child, arr, tmp+child.val)
+        
         cur = self.root
         res = []
-        for c in searchWord:
-            if c in cur.children:
-                cur = cur.children[c]
-                res.append(cur.suggestions)
-            else: 
+        for i, c in enumerate(searchWord):
+            if c not in cur.children: 
                 break
-        res += [[] for i in range(len(searchWord)-len(res))]
+            cur = cur.children[c]
+            arr = []
+            dfs(cur, arr, "")
+            for j in range(len(arr)):
+                arr[j] = searchWord[:i+1] + arr[j]
+            res.append(arr)
+        res += [[] for i in range(len(searchWord) - len(res))]
+        
         return res
-                
-
-class Solution:
-    def suggestedProducts(self, products, searchWord):
-        products.sort()
-        trie = Trie()
-        for word in products:
-            trie.addWord(word)
-        return trie.getSuggestions(searchWord)
-    
-    
-    
-# Time: O(N log(N)) + O(N * K) ; where N = len(products), K = len(searchWord)
-# Space: O(N)
