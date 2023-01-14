@@ -6,7 +6,6 @@ class SeatManager:
         heapq.heapify(self.minHeap)
 
     def reserve(self) -> int:
-        if not self.minHeap: return 
         return heapq.heappop(self.minHeap)
 
     def unreserve(self, seatNumber: int) -> None:
