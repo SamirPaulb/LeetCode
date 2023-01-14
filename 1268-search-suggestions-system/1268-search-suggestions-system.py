@@ -2,7 +2,7 @@ class TrieNode:
     def __init__(self):
         self.children = {}
         self.isWord = False
-        self.val = "-"
+        self.val = ""
 
 class Solution:
     def __init__(self):
@@ -17,10 +17,10 @@ class Solution:
             cur.val = c
         cur.isWord = True
     
-    def suggestedProducts(self, products: List[str], searchWord: str) -> List[List[str]]:
+    def suggestedProducts(self, products, searchWord):
         products.sort()
-        for pd in products:
-            self.addWord(pd)
+        for product in products:
+            self.addWord(product)
         
         def dfs(cur, arr, tmp):
             if len(arr) == 3 or not cur: return 
@@ -40,6 +40,6 @@ class Solution:
             for j in range(len(arr)):
                 arr[j] = searchWord[:i+1] + arr[j]
             res.append(arr)
+            
         res += [[] for i in range(len(searchWord) - len(res))]
-        
         return res
