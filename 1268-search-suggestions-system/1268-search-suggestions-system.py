@@ -22,20 +22,17 @@ class Trie:
         cur = self.root
         res = []
         for c in searchWord:
-            if c not in cur.children:
-                break
-            else:
+            if c in cur.children:
                 cur = cur.children[c]
                 res.append(cur.suggestions)
+            else: 
+                break
         res += [[] for i in range(len(searchWord)-len(res))]
         return res
                 
 
 class Solution:
     def suggestedProducts(self, products, searchWord):
-        # edge cases:
-        # if len(products) == 1 and products[0] == searchWord:
-        #     return [[searchWord] for i in range(len(searchWord))]
         products.sort()
         trie = Trie()
         for word in products:
