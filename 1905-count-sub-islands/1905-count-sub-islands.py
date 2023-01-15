@@ -1,19 +1,29 @@
 class Solution:
-    def countSubIslands(self, grid1: List[List[int]], grid2: List[List[int]]) -> int:
-        ROW = len(grid1); COL = len(grid1[0])
-        def dfs(i, j):
-            if not 0<=i<ROW or not 0<=j<COL or grid2[i][j] == 0: return True
-            if grid1[i][j] == 0: return False
-            ans = True
-            grid2[i][j] = grid1[i][j] = 0
-            for dx, dy in ((1,0),(-1,0),(0,1),(0,-1)):
-                r = i+dx; c = j+dy
-                ans = ans & dfs(r,c)
-            return ans
-        self.res = 0
-        for i in range(ROW):
-            for j in range(COL):
-                if grid2[i][j] == 1 and dfs(i,j):
-                    self.res += 1
+    def countSubIslands(self, grid1, grid2):
+        m = len(grid1) 
+        n = len(grid1[0])
         
-        return self.res
+        def dfs(i, j):
+            if not 0<=i<m or not 0<=j<n or grid2[i][j] == 0: return 
+            grid2[i][j] = 0
+            for dx, dy in ((1,0),(-1,0),(0,1),(0,-1)):
+                dfs(i+dx, j+dy)
+                
+        # removing all the non-common sub-islands
+        for i in range(m):
+            for j in range(n):
+                if grid2[i][j] == 1 and grid1[i][j] == 0:
+                    dfs(i, j)
+        
+        res = 0
+        # counting sub-islands
+        for i in range(m):
+            for j in range(n):
+                if grid2[i][j] == 1: 
+                    dfs(i, j)
+                    res += 1
+        
+        return res
+                
+        
+        
