@@ -1,15 +1,8 @@
 class Solution:
     def findDifferentBinaryString(self, nums: List[str]) -> str:
-        numset = set(nums)
-        for num in nums:
-            num = list(num)
-            for i in range(len(num)):
-                arr = num
-                if arr[i] == '0':
-                    arr[i] = '1'
-                else:
-                    arr[i] = '0'
-                ans = "".join(arr)
-                if ans not in numset: return ans
-        
-        return ""
+        n = len(nums[0])
+        numset = set([int(i, 2) for i in nums])
+        for i in range(2**n):
+            if i not in numset: 
+                res = bin(i)[2:]
+                return '0' * (n - len(res)) + res
