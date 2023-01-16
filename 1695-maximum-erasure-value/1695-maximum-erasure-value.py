@@ -1,8 +1,7 @@
 class Solution:
     def maximumUniqueSubarray(self, nums: List[int]) -> int:
         l, r = 0, 1
-        res = nums[0]
-        tmp = nums[0]
+        res = tmp = nums[0]
         subarr = {nums[0]}
         for r in range(1, len(nums)):
             while nums[r] in subarr:
@@ -14,3 +13,7 @@ class Solution:
             res = max(res, tmp)
         
         return res
+    
+    
+# Time: O(N)
+# Space: O(N)
