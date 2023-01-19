@@ -1,4 +1,4 @@
-'''
+### Solution 1 # Using Queue
 class Solution:
     def maxSlidingWindow(self, nums, k):
         q = collections.deque()
@@ -14,7 +14,8 @@ class Solution:
         
         return res
     
-'''
+    
+### Solution 2 # Using MaxHeap
 import heapq
 class Solution:
     def maxSlidingWindow(self, nums, k):
