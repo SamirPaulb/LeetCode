@@ -1,3 +1,6 @@
+# https://leetcode.com/problems/minimum-number-of-flips-to-make-the-binary-string-alternating/
+# https://youtu.be/MOeuK6gaC2A
+
 class Solution:
     def minFlips(self, s: str) -> int:
         n = len(s)
@@ -15,7 +18,7 @@ class Solution:
             if s[r] != alt2[r]:
                 diff2 += 1
                 
-            if r > n-1:
+            if r-l+1 > n:
                 if s[l] != alt1[l]: 
                     diff1 -= 1
                 if s[l] != alt2[l]:
@@ -26,3 +29,8 @@ class Solution:
                 res = min(res, diff1, diff2)
         
         return res
+    
+    
+    
+# Time: O(N)
+# Space: O(1)
