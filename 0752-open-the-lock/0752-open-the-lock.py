@@ -1,5 +1,6 @@
 class Solution:
     def openLock(self, deadends: List[str], target: str) -> int:
+        deadends = set(deadends)
         if '0000' in deadends: 
             return -1
         visited = set()
