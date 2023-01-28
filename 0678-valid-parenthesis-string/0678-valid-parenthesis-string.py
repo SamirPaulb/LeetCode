@@ -1,35 +1,23 @@
-# https://leetcode.com/problems/valid-parenthesis-string/
-
 class Solution:
     def checkValidString(self, s: str) -> bool:
-        # store the indices of '('
-        openStack = []
-        # store the indices of '*'
-        starStack = []
-        
-        for i, ch in enumerate(s):
-            if ch == ')':
-                if openStack:
-                    openStack.pop()
-                elif starStack:
-                    starStack.pop()
-                else: 
-                    return False
-            elif ch == '(':
-                openStack.append(i)
+        open_stack = []
+        star_stack = []
+        for i in range(len(s)):
+            if s[i] == '(':
+                open_stack.append(i)
+            elif s[i] == '*':
+                star_stack.append(i)
             else:
-                starStack.append(i)
-                
-        # cancel ( and * with valid positions, i.e., '(' must be on the left hand side of '*'
-        while openStack and starStack:
-            if openStack[-1] > starStack[-1]:
+                if open_stack:
+                    open_stack.pop()
+                elif star_stack:
+                    star_stack.pop()
+                else:
+                    return False
+        while open_stack and star_stack:
+            if open_stack[-1] > star_stack[-1]:
                 return False
-            openStack.pop()
-            starStack.pop()
-        
-        # Accept when openStack is empty, which means all braces are paired
-        return len(openStack) == 0
-      
-      
-# Time: O(N)
-# Space: O(N)
+            open_stack.pop()
+            star_stack.pop()
+            
+        return len(open_stack) == 0
