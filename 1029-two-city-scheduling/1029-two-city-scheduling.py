@@ -14,11 +14,10 @@ class Solution:
                 res += diffs[i][2]    # sending to city B     
             else:
                 res += diffs[i][1]    # sending to city A
-                
         return res
 
 # Time: O(n log(n))
-'''
+
 # ------------------ Dynamic Programming ------------------
 class Solution:
     def twoCitySchedCost(self, costs):
@@ -43,4 +42,3 @@ class Solution:
     
     
 # Time: O(n^2)
-'''
