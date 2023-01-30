@@ -1,3 +1,5 @@
+# https://leetcode.com/problems/splitting-a-string-into-descending-consecutive-values/
+
 class Solution:
     def splitString(self, s: str) -> bool:
         i = 0
@@ -14,9 +16,11 @@ class Solution:
                 elif num == n:
                     n -= 1
                     l = r+1
-                    print(l)
                     if l == len(s): return True
                 r += 1
             i += 1
         
         return False
+      
+      
+# Time: O(N^2)
