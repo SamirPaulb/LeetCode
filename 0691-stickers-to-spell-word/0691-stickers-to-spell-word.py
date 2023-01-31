@@ -1,3 +1,6 @@
+# https://leetcode.com/problems/stickers-to-spell-word/
+# https://youtu.be/hsomLb6mUdI
+
 class Solution:
     def minStickers(self, stickers: List[str], target: str) -> int:
         targetSet = set(target)
@@ -34,3 +37,6 @@ class Solution:
         res = dfs(target, {})
         return res if res != 2**31 else -1
             
+        
+        
+# Time: O(2^n)
