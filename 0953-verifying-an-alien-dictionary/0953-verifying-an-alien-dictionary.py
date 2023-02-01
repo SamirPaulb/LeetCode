@@ -16,13 +16,13 @@ If a sequence of words is sorted, then each adjacent word of the sequence must a
 class Solution:
     def isAlienSorted(self, words: List[str], order: str) -> bool:
         ind = {c:i for i,c in enumerate(order)}
-        def check(w1, w2):
+        def checkOrder(w1, w2):
             for s1, s2 in zip(w1, w2):
                 if ind[s1] != ind[s2]:
                     return ind[s1] < ind[s2]
             return len(w1) <= len(w2)
         
-        return all(check(w1, w2) for w1, w2 in zip(words, words[1:]))
+        return all(checkOrder(w1, w2) for w1, w2 in zip(words, words[1:]))
 
                 
         
