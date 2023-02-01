@@ -1,3 +1,6 @@
+# https://leetcode.com/problems/number-of-ways-to-rearrange-sticks-with-k-sticks-visible/
+# https://youtu.be/O761YBjGxGA
+
 class Solution:
     def rearrangeSticks(self, n: int, k: int) -> int:
         dp = {}
@@ -10,3 +13,7 @@ class Solution:
             return dp[(N,K)]
         
         return dfs(n, k)
+    
+    
+# Time: O(n * k)
+# Space: O(n * k)
