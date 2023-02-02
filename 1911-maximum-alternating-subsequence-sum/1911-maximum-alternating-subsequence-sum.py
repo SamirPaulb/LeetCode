@@ -1,4 +1,4 @@
-'''# https://leetcode.com/problems/maximum-alternating-subsequence-sum/
+# https://leetcode.com/problems/maximum-alternating-subsequence-sum/
 
 class Solution:
     def maxAlternatingSum(self, nums: List[int]) -> int:
@@ -26,10 +26,9 @@ class Solution:
         
         return res
     
-    
 # Time: O(N)
 # Space: O(N)
-'''
+
 
 
 '''
@@ -46,7 +45,6 @@ class Solution:
             even = max(odd - num, even)
         
         return max(odd, even)
-    
     
 # Time: O(N)
 # Space: O(1)
