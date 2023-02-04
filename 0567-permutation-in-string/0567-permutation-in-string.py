@@ -1,5 +1,5 @@
 class Solution:
-    def checkInclusion(self, s1: str, s2: str) -> bool:
+    def checkInclusion(self, s1, s2):
         k = len(s1)
         s1d = collections.Counter(s1)
         s2d = collections.Counter(s2[:k])
@@ -10,3 +10,7 @@ class Solution:
             if s1d == s2d: return True
         
         return False
+    
+    
+# Time: O(N); where N = len(s2)
+# Space: O(K)
