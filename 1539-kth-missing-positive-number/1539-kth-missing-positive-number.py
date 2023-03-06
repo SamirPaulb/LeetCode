@@ -1,9 +1,11 @@
 class Solution:
     def findKthPositive(self, arr: List[int], k: int) -> int:
-        arrset = set(arr)
-        for i in range(1, 2002):
-            if i not in arrset:
-                k -= 1
-            if k == 0: return i
+        l, r = 0, len(arr)-1
+        while l <= r:
+            mid = l + (r - l) // 2
+            if arr[mid] < mid+1 + k:
+                l = mid + 1
+            else:
+                r = mid - 1
         
-        return -1
+        return l + k
