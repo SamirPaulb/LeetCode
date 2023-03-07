@@ -7,7 +7,8 @@ class Solution:
                 tripsCount += curTime // t
             return tripsCount >= totalTrips
         
-        l, r = 0, sum(time) * totalTrips
+        l = 0
+        r  = min(time) * totalTrips + 1
         while l <= r:
             mid = l + (r - l) // 2
             if check(mid):
