@@ -1,22 +1,11 @@
 class Solution:
     def lengthOfLIS(self, nums: List[int]) -> int:
-        LIS = [nums[0]]
+        dp = [0]*(len(nums)+1)
+        for i in range(len(nums)):
+            tmp = 0
+            for j in range(i):
+                if nums[j] < nums[i]:
+                    tmp = max(tmp, dp[j])
+            dp[i] = tmp+1
         
-        def bis_left(target):
-            l, r = 0, len(LIS)-1
-            while l <= r:
-                mid = l + (r-l)//2
-                if LIS[mid] >= target:
-                    r = mid - 1
-                else:
-                    l = mid + 1
-            return l
-        
-        for i in range(1, len(nums)):
-            if nums[i] > LIS[-1]:
-                LIS.append(nums[i])
-            else:
-                idx = bis_left(nums[i])
-                LIS[idx] = nums[i]
-        
-        return len(LIS)
+        return max(dp)
