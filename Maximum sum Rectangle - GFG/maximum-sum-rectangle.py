@@ -14,7 +14,7 @@ class Solution:
         res = kadanes(M[0])
         for i in range(R):
             arr = [0]*C
-            for r in range(i, R):
+            for r in range(i, -1, -1):
                 for c in range(C):
                     arr[c] += M[r][c]
                 res = max(res, kadanes(arr))
