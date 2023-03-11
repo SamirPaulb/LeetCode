@@ -1,13 +1,13 @@
 class Solution:
     def maxProfit(self, prices: List[int], fee: int) -> int:
-        pb, ps = -prices[0], 0
-        cb, cs = 0, 0
+        obsp, ossp = -prices[0], 0
+        nbsp, nssp = 0, 0
         
-        for p in prices[1:]:
-            cb = max(pb, ps - p)
-            cs = max(ps, pb + p - fee)
+        for p in prices:
+            nbsp = max(obsp, ossp - p)
+            nssp = max(ossp, obsp + p - fee)
             
-            pb = cb
-            ps = cs
+            obsp = nbsp
+            ossp = nssp
         
-        return ps
+        return ossp
