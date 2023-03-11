@@ -11,17 +11,24 @@
 #         self.right = right
 class Solution:
     def sortedListToBST(self, head: Optional[ListNode]) -> Optional[TreeNode]:
-        arr = []
-        while head:
-            arr.append(head.val)
-            head = head.next
+        if not head: return None
+        prevMid, mid = self.getMid(head)
+        if not mid: return None
+        nextToMid = mid.next
+        mid.next = None
+        prevMid.next = None
+        root = TreeNode(mid.val)
+        if prevMid == mid: return root
+        root.left = self.sortedListToBST(head)
+        root.right = self.sortedListToBST(nextToMid)
+        return root
         
-        def solve(l, r):
-            if l > r: return None
-            mid = l + (r - l)//2
-            root = TreeNode(arr[mid])
-            root.left = solve(l, mid-1)
-            root.right = solve(mid+1, r)
-            return root
-        
-        return solve(0, len(arr)-1)
+    
+    def getMid(self, head):
+        if not head: return None
+        slow, prevslow, fast = head, head, head
+        while fast and fast.next:
+            prevslow = slow
+            slow = slow.next
+            fast = fast.next.next
+        return prevslow, slow
