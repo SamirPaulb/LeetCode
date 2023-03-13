@@ -8,12 +8,9 @@ class Solution:
                 if i - len(word) >= 0 and s[i-len(word):i] == word:
                     if i-len(word) == 0:
                         arr.append(word)
-                    elif dp[i-len(word)] == [""]:
-                        continue
-                    else:
+                    elif dp[i-len(word)] != [""]:
                         for st in dp[i-len(word)]:
                             arr.append(st + " " + word)
             dp[i] = arr
-                        
         # print(dp)
         return dp[-1]
