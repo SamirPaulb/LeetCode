@@ -5,7 +5,7 @@ gemspec
 
 
 # Jekyll as a dependency
-gem "jekyll", github: "jekyll/jekyll"
+gem gem 'jekyll', '~> 3.5'
 gem "liquid-c"
 
 gem 'jekyll-seo-tag'  
