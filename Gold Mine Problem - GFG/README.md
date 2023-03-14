@@ -14,9 +14,9 @@
 <strong><span style="font-size:18px">Example 1:</span></strong></p>
 
 <pre><span style="font-size:18px"><strong>Input:</strong> n = 3, m = 3
-M = {{1, 3, 3},
-     {2, 1, 4},
-     {0, 6, 4}};
+M = [[1, 3, 3],
+     [2, 1, 4],
+     [0, 6, 4]];
 <strong>Output:</strong> 12
 <strong>Explaination:</strong> 
 The path is {(1,0) -&gt; (2,1) -&gt; (2,2)}.</span></pre>
@@ -25,10 +25,7 @@ The path is {(1,0) -&gt; (2,1) -&gt; (2,2)}.</span></pre>
 <strong><span style="font-size:18px">Example 2:</span></strong></p>
 
 <pre><span style="font-size:18px"><strong>Input:</strong> n = 4, m = 4
-M = {{1, 3, 1, 5},
-     {2, 2, 4, 1},
-     {5, 0, 2, 3},
-     {0, 6, 1, 2}};
+
 <strong>Output:</strong> 16
 <strong>Explaination:</strong> 
 The path is {(2,0) -&gt; (3,1) -&gt; (2,2) 
