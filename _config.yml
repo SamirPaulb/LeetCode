@@ -6,6 +6,5 @@ plugins:
 title: [LeetCode Solutions - Samir Paul]
 description: [LeetCode Solutions in Python and C++]
 
-show_downloads: ["true" or "false" (unquoted) to indicate whether to provide a download URL]
 google_analytics: [G-CP4QE6ZEV0]
 
