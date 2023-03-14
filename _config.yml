@@ -1,0 +1,8 @@
+plugins:
+- jekyll-seo-tag
+
+excerpt_separator: ""   
+title: [LeetCode Solutions - Samir Paul]
+description: [LeetCode Solutions in Python and C++]
+
+google_analytics: [G-CP4QE6ZEV0]
