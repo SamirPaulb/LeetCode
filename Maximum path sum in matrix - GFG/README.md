@@ -15,8 +15,6 @@
 <strong><span style="font-size:18px">Example 1:</span></strong></p>
 
 <pre><span style="font-size:18px"><strong>Input:</strong> N = 2
-Matrix = {{348, 391},
-          {618, 193}}
 <strong>Output:</strong> 1009
 <strong>Explaination:</strong> The best path is 391 -&gt; 618. 
 It gives the sum = 1009.</span></pre>
@@ -25,8 +23,6 @@ It gives the sum = 1009.</span></pre>
 <strong><span style="font-size:18px">Example 2:</span></strong></p>
 
 <pre><span style="font-size:18px"><strong>Input:</strong> N = 2
-Matrix = {{2, 2},
-          {2, 2}}
 <strong>Output:</strong> 4
 <strong>Explaination:</strong> No matter which path is 
 chosen, the output is 4.</span></pre>
