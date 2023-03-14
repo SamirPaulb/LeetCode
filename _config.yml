@@ -1,5 +1,13 @@
-theme: minima
+remote_theme: pages-themes/cayman@v0.2.0
+
+
+title: [LeetCode Solutions - Samir Paul]
+description: [LeetCode Solutions in Python and C++]
+
+show_downloads: ["false"]
+google_analytics: [G-CP4QE6ZEV0]
 
 plugins:
+  - jekyll-remote-theme 
   - jekyll-feed
   - jekyll-seo-tag
