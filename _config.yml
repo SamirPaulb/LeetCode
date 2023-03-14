@@ -1,0 +1,12 @@
+remote_theme: pages-themes/cayman@v0.2.0
+
+
+plugins:
+- jekyll-seo-tag
+- jekyll-remote-theme
+
+excerpt_separator: ""   
+title: [LeetCode Solutions - Samir Paul]
+description: [LeetCode Solutions in Python and C++]
+
+google_analytics: [G-CP4QE6ZEV0]
