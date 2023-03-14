@@ -8,6 +8,6 @@ show_downloads: ["false"]
 google_analytics: [G-CP4QE6ZEV0]
 
 plugins:
-  - jekyll-remote-theme 
   - jekyll-feed
   - jekyll-seo-tag
+  - 'jekyll-target-blank'
