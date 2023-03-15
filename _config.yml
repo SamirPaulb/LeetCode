@@ -74,3 +74,5 @@ plugins:
 - jekyll-loading-lazy
 - jekyll-include-cache
 - jekyll-paginate
+- jekyll-github-metadata
+
