@@ -22,3 +22,5 @@ gem 'jekyll-feed'
 gem 'jekyll-sitemap'
 gem "jekyll-github-metadata"
 gem "github-pages"
+gem 'jekyll-pwa-plugin'
+
