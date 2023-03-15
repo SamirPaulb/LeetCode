@@ -37,6 +37,9 @@ google_analytics:
   id: G-CP4QE6ZEV0
 
 
+regenerate: true
+incremental: true
+
 
 plugins:
 - jekyll-seo-tag
