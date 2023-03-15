@@ -45,7 +45,7 @@
     <a id="skip-to-content" href="#content">Skip to the content.</a>
 
     <header class="page-header" role="banner">
-      <h1 class="project-name">{{ page.title | default: site.title | default: site.github.repository_name }}</h1>
+      <h1 class="project-name">{{ page.path }}</h1>
       <h2 class="project-tagline">{{ page.description | default: site.description | default: site.github.project_tagline }}</h2>
       {% if site.github.is_project_page %}
         <a href="{{ site.github.repository_url }}" class="btn">View on GitHub</a>
@@ -61,9 +61,9 @@
 
       <footer class="site-footer">
         {% if site.github.is_project_page %}
-          <span class="site-footer-owner"><a href="{{ site.github.repository_url }}">{{ site.github.repository_name }}</a> is maintained by <a href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a>.</span>
+          <span class="site-footer-owner"><a href="{{ site.github.repository_url }}">GitHub/{{ site.github.repository_name }}</a> is maintained by <a href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a>.</span>
         {% endif %}
-        <span class="site-footer-credits"><a href="https://samirpaul1.github.io/LeetCode/sitemap.xml">Sitemap</a></span>
+        <span class="site-footer-credits"><a href="https://samirpaul1.github.io/LeetCode/sitemap.xml">Sitemap</a></span> • <a href="https://samirpaul1.github.io/posts">Blog</a> • <a href="https://www.linkedin.com/in/SamirPaul">LinkedIn</a> • <a href="https://github.com/SamirPaul1">GitHub</a>
       </footer>
     </main>
   </body>
