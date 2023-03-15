@@ -1,5 +1,36 @@
 remote_theme: pages-themes/cayman@v0.2.0
 
+author: Samir Paul
+
+github:
+  username: SamirPaul1             
+
+twitter:
+  username: SamirPaulb            
+  card: summary_large_image
+
+facebook:
+  app_id: 6800281970014175
+  publisher: 
+  admins: 
+
+google_site_verification: vJAOBxbJTCK2vXG-hLFeGsoC9hXgFlCpuJJ8AcJLROQ
+
+webmaster_verifications:
+  google: vJAOBxbJTCK2vXG-hLFeGsoC9hXgFlCpuJJ8AcJLROQ
+  bing: 1A92FC2EC113F8616A21D76DA684A133
+  yandex: fe6a06c57be84984
+  pinterest: 24bac6e1fbf1750de40d59bb788d9dd9
+  facebook: 3pkgruuk3kzlsn3jdfehgbd4sem1qb
+  
+
+# ↑ --------------------------
+# The end of `jekyll-seo-tag` settings
+
+google_analytics: 
+  id: G-CP4QE6ZEV0
+
+
 
 plugins:
 - jekyll-seo-tag
