@@ -41,6 +41,30 @@ regenerate: true
 incremental: true
 
 
+
+social:
+  # Change to your full name.
+  # It will be displayed as the default author of the posts and the copyright owner in the Footer
+  name: Samir Paul
+  email:                   # change to your email address
+  links: 
+    # The first element serves as the copyright owner's link
+    - https://twitter.com/SamirPaulb      # change to your twitter homepage
+    - https://github.com/SamirPaul1       # change to your github homepage
+    - https://www.linkedin.com/in/SamirPaul
+    - https://www.facebook.com/SamirPaulb
+    - https://www.instagram.com/SamirPaulb
+    
+    
+feed_items: 10
+feed_update_period: daily
+feed_update_frequency: 1
+
+
+paginate: 5
+
+
+
 plugins:
 - jekyll-seo-tag
 - jekyll-remote-theme
