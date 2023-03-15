@@ -20,3 +20,5 @@ gem 'jekyll-gist'
 gem 'jemoji'
 gem 'jekyll-feed'
 gem 'jekyll-sitemap'
+gem "jekyll-github-metadata"
+gem "github-pages"
