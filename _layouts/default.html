@@ -61,9 +61,11 @@
 
       <div>
         <p>Solution Code:</p>
-        <code>
-        {%  'https://github.com/SamirPaul1/LeetCode/blob/main/{{ page.url }}/{{ page.url }}.py' | raw  %}
-        </code>
+        <pre>
+          <code>
+          {%  include_relative {{ page.url }}/{{ page.url }}.py %}
+          </code>
+        </pre>
       </div>
       
       <footer class="site-footer">
