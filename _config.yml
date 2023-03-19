@@ -1,8 +1,8 @@
 remote_theme: pages-themes/cayman@v0.2.0
 
 
-title: LeetCode Solutions - Samir Paul
-description: LeetCode Solutions in Python and C++
+title: {{ page.path }} - Samir Paul
+description: {{ page.path }} - LeetCode Solutions in Python and C++
 
 
 excerpt_separator: ""   
