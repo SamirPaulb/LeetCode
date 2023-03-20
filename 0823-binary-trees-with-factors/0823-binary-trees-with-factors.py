@@ -5,20 +5,10 @@ class Solution:
         res = 0
         for i in range(len(arr)):
             count[arr[i]] += 1
-            tmp = count[arr[i]] 
-            l, r = 0, i-1
-            while l <= r:
-                if arr[l] * arr[r] < arr[i]:
-                    l += 1 
-                elif arr[l] * arr[r] > arr[i]:
-                    r -= 1
-                else:
-                    if arr[l] != arr[r]:
-                        tmp += 2 * count[arr[l]] * count[arr[r]]
-                    else:
-                        tmp += count[arr[l]] * count[arr[r]]
-                    l += 1
-                    r -= 1
+            tmp = count[arr[i]]
+            for j in range(i):
+                if arr[i] % arr[j] == 0:
+                    tmp += count[arr[j]] * count[arr[i] // arr[j]]
             count[arr[i]] = tmp % (10**9 + 7)
-            res += tmp
-        return res % (10**9 + 7)
+        
+        return sum(count.values()) % (10**9 + 7)
