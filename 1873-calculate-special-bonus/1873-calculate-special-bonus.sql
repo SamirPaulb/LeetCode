@@ -1,11 +1,4 @@
-select employee_id, salary as bonus 
+# Write your MySQL query statement below
+select employee_id, salary * (employee_id%2) * (name not like "M%") as bonus 
 from Employees
-where employee_id % 2 != 0 and name not like "M%"
-
-union 
-
-select employee_id, 0 as bonus 
-from Employees
-where employee_id % 2 = 0 or name like "M%"
-
 order by employee_id;
