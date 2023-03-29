@@ -1,3 +1,10 @@
+# https://leetcode.com/problems/reducing-dishes/
+
+'''
+# We choose dishes from most satisfied. Everytime we add a new dish to the menu list, 
+# all dishes on the menu list will be cooked one time unit later, so the result += total satisfaction on the list.
+# We'll keep doing this as long as A[i] + total > 0.
+
 class Solution:
     def maxSatisfaction(self, A: List[int]) -> int:
         n = len(A)
@@ -12,3 +19,17 @@ class Solution:
             return ans
         
         return dfs(0, 1)
+    
+# Time: O(N^2)
+'''
+
+class Solution:
+    def maxSatisfaction(self, A: List[int]) -> int:
+        res = total = 0
+        A.sort()
+        while A and A[-1] + total > 0:
+            total += A.pop()
+            res += total
+        return res
+      
+# Time: O(N)
