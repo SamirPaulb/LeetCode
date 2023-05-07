@@ -8,14 +8,17 @@ class Solution:
     def isCompleteTree(self, root: Optional[TreeNode]) -> bool:
         q = collections.deque()
         q.append(root)
-        isNull = False
+        flag = False
         while q:
-            node = q.popleft()
-            if not node:
-                isNull = True
-                continue
-            if isNull: return False
-            q.append(node.left)
-            q.append(node.right)
-        
+            n = len(q)
+            for _ in range(n):
+                node = q.popleft()
+                if node and flag: return False
+                if not node: 
+                    flag = True
+                    continue
+                q.append(node.left)
+                q.append(node.right)
+                
         return True
+                
