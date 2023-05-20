@@ -8,12 +8,11 @@ class Solution:
     def maxPathSum(self, root: Optional[TreeNode]) -> int:
         self.res = root.val
         def solve(root):
-            if not root: return 0
+            if not root: return -2**31
             l = solve(root.left)
             r = solve(root.right)
-            tmp = max(root.val, root.val + max(l, r))
-            self.res = max(self.res, tmp, l + root.val + r)
-            return tmp
+            self.res = max(self.res, l, r, root.val, l+r+root.val, max(l,r)+root.val)
+            return max(max(l, r) + root.val, root.val)
         
         solve(root)
         return self.res
