@@ -6,13 +6,12 @@
 #         self.right = right
 class Solution:
     def buildTree(self, inorder: List[int], postorder: List[int]) -> Optional[TreeNode]:
-        inorderIndex = {ch:i for i, ch in enumerate(inorder)}
-        self.pi = len(postorder)-1
+        inIndex = {v:i for i, v in enumerate(inorder)}
         def solve(l, r):
             if l > r: return None
-            root = TreeNode(postorder[self.pi])
-            self.pi -= 1
-            i = inorderIndex[root.val]
+            v = postorder.pop()
+            i = inIndex[v]
+            root = TreeNode(v)
             root.right = solve(i+1, r)
             root.left = solve(l, i-1)
             return root
