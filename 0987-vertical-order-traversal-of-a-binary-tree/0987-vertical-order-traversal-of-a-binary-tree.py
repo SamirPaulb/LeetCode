@@ -6,23 +6,16 @@
 #         self.right = right
 class Solution:
     def verticalTraversal(self, root: Optional[TreeNode]) -> List[List[int]]:
-        colDict = {}
-        def solve(root, c, l):
+        dct = {}
+        def solve(root, d, l):
             if not root: return 
-            if c not in colDict:
-                colDict[c] = [(l, root.val)]
-            else:
-                colDict[c].append((l, root.val))
-            solve(root.left, c-1, l+1)
-            solve(root.right, c+1, l+1)
+            if d not in dct: dct[d] = [(l, root.val)]
+            else: dct[d].append((l, root.val))
+            solve(root.left, d-1, l+1)
+            solve(root.right, d+1, l+1)
         
         solve(root, 0, 0)
-        keys = sorted(list(colDict.keys()))
-        # print(colDict)
         res = []
-        for key in keys:
-            tmp = []
-            for l, v in sorted(colDict[key]):
-                tmp.append(v)
-            res.append(tmp)
+        for key in sorted(list(dct.keys())):
+            res.append([v for l, v in sorted(dct[key])])
         return res
