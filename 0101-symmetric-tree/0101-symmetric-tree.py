@@ -6,9 +6,9 @@
 #         self.right = right
 class Solution:
     def isSymmetric(self, root: Optional[TreeNode]) -> bool:
-        def solve(a, b):
-            if not a and not b: return True
-            if not a or not b: return False
-            if a.val != b.val: return False
-            return solve(a.left, b.right) and solve(a.right, b.left)
+        def solve(l, r):
+            if not l and not r: return True
+            if not l or not r: return False
+            return l.val == r.val and solve(l.left, r.right) and solve(l.right, r.left)
+        
         return solve(root.left, root.right)
