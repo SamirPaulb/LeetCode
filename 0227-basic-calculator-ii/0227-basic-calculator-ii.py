@@ -16,11 +16,8 @@ class Solution:
                 elif sign == '*':
                     stack.append(stack.pop() * num)
                 elif sign == '/':
-                    preNum = stack.pop()
-                    if preNum <= 0: 
-                        stack.append(ceil(preNum/num))
-                    else:
-                        stack.append(preNum // num)
+                    stack.append(int(stack.pop() / num))
+                    
                 i -= 1
             elif s[i] != ' ':
                 sign = s[i]
