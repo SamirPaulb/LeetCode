@@ -5,8 +5,8 @@ class Solution:
         res = 0
         for r in range(len(nums)):
             mul *= nums[r]
-            while l < len(nums) and mul >= k:
+            while l <= r and mul >= k:
                 mul //= nums[l]
                 l += 1
             res += r-l+1
-        return max(res, 0)
+        return res
