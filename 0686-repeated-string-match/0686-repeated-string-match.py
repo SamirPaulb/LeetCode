@@ -1,10 +1,10 @@
 class Solution:
     def repeatedStringMatch(self, a: str, b: str) -> int:
-        res = 0
-        tmp = ""
+        res = 1
+        tmp = a
         while len(tmp) < len(b):
             tmp += a
             res += 1
         if b in tmp: return res
-        if b in a+tmp: return res + 1
-        return -1
+        tmp += a
+        return res+1 if b in tmp else -1
