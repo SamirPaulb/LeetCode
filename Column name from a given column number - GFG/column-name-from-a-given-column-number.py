@@ -7,13 +7,13 @@ class Solution:
         while n > 0:
             r = n%26
             if r == 0: 
-                res += 'Z'
+                res = 'Z' + res
                 n = (n-1)//26
             else:
-                res += chr(64 + r)
+                res = chr(64 + r) + res
                 n = n//26
         
-        return res[::-1]
+        return res
         
 
 
