@@ -1,5 +1,5 @@
 class Solution:
-    def singleNumber(self, nums: List[int]) -> int:
+    def singleNumber(self, nums):
         res = 0
         negCount = 0
         for i in range(32):
