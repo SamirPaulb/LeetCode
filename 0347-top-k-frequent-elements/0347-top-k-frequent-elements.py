@@ -19,3 +19,7 @@ class Solution:
             if len(res) >= k: break
         
         return res
+    
+    
+# Time: O(N)
+# Space: O(N)
