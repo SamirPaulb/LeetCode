@@ -3,7 +3,7 @@ class Solution:
         cs = 0
         ms = nums[0]
         for num in nums:
-            cs += num
-            cs = max(cs, num)
+            cs = max(cs+num, num)
             ms = max(ms, cs)
+        
         return ms
