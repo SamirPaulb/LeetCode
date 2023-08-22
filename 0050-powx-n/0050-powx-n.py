@@ -1,14 +1,17 @@
 class Solution:
     def myPow(self, x: float, n: int) -> float:
-        p = n
-        if p < 0: p *= -1
+        nNeg = False if n >= 0 else True
+        xNeg = False if x >= 0 else True
+        if nNeg: n *= -1
         res = 1
-        while p:
-            if p%2 == 0:
-                x = x * x 
-                p //= 2
+        while n:
+            if n % 2 == 0:
+                x *= x
+                n /= 2
             else:
                 res *= x
-                p -= 1
-        if n < 0: return 1/res
+                n -= 1
+        
+        if xNeg and n%2: res *= -1
+        if nNeg: res = 1/res
         return res
