@@ -1,22 +1,14 @@
 class Solution:
     def coinChange(self, coins: List[int], amount: int) -> int:
-        dp = [[0]*(amount+1) for _ in range(len(coins)+1)]
+        memo = {}
+        def solve(i, amount):
+            if amount == 0: return 0
+            if amount < 0: return 2**31
+            if i >= len(coins): return 2**31
+            if (i, amount) in memo: return memo[(i, amount)]
+            ans = min(1 + min(solve(i, amount - coins[i]), solve(i+1, amount - coins[i])), solve(i+1, amount))
+            memo[(i, amount)] = ans
+            return ans
         
-        for j in range(amount+1):
-            dp[0][j] = float('inf')
-        
-        for j in range(1, amount+1):
-            if j%coins[0]==0:
-                dp[1][j] = j//coins[0]
-            else:
-                dp[1][j] = float('inf')
-        
-        for i in range(2, len(coins)+1):
-            for j in range(1, amount+1):
-                if coins[i-1] <= j:
-                    dp[i][j] = min(1 + dp[i][j-coins[i-1]], dp[i-1][j])
-                else:
-                    dp[i][j] = dp[i-1][j]
-        
-        ans = dp[-1][-1]
-        return ans if ans != float('inf') else -1
+        res = solve(0, amount)
+        return res if res < 2**31 else -1
