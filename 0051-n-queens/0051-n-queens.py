@@ -1,26 +1,25 @@
 class Solution:
-    def solveNQueens(self, n):
-        col, posDiag, negDiag = set(), set(), set()
+    def solveNQueens(self, n: int) -> List[List[str]]:
         board = [['.']*n for _ in range(n)]
+        col = set()
+        pos = set()
+        neg = set()
         res = []
+        def solve(r):
+            if r >= n:
+                res.append([''.join(row) for row in board])
+                return
+            for c in range(n):
+                if c not in col and r+c not in pos and r-c not in neg:
+                    col.add(c)
+                    pos.add(r+c)
+                    neg.add(r-c)
+                    board[r][c] = 'Q'
+                    solve(r+1)
+                    col.remove(c)
+                    pos.remove(r+c)
+                    neg.remove(r-c)
+                    board[r][c] = '.'
         
-        def dfs(i):
-            if i == n: 
-                res.append(["".join(board[i]) for i in range(n)])
-                return 
-            for j in range(n):
-                if j not in col and (i+j) not in posDiag and (i-j) not in negDiag:
-                    board[i][j] = 'Q'
-                    col.add(j)
-                    posDiag.add(i+j)
-                    negDiag.add(i-j)
-                    
-                    dfs(i+1)
-                    
-                    board[i][j] = '.'
-                    col.remove(j)
-                    posDiag.remove(i+j)
-                    negDiag.remove(i-j)
-            
-        dfs(0)
+        solve(0)
         return res
