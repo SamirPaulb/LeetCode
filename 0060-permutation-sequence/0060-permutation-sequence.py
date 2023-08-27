@@ -1,18 +1,17 @@
-from math import factorial
-
+import math
 class Solution:
     def getPermutation(self, n: int, k: int) -> str:
-        p = factorial(n-1)
-        arr = [str(i+1) for i in range(n)]
+        arr = [str(i) for i in range(1, n+1)]
+        fact = math.factorial(n-1)
         k -= 1
-        res = ""
+        res = ''
         while k:
-            i = k//p
+            i = k//fact
             res += arr[i]
-            # print(n, k, i, arr)
-            arr = arr[:i] + arr[i+1:]
-            k = k%p
+            arr.pop(i)
+            k = k % fact
             n -= 1
-            p = p//n
+            fact //= n
+
         res += ''.join(arr)
         return res
