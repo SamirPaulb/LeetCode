@@ -1,36 +1,39 @@
 class Solution:
     def solveSudoku(self, board: List[List[str]]) -> None:
-        row = {i:set() for i in range(9)}
-        col = {i:set() for i in range(9)}
-        sub_block = {}
+        row = {i:set() for i in range(10)}
+        col = {i:set() for i in range(10)}
+        sub = {}
+        
         for i in range(9):
             for j in range(9):
-                rs, cs = i//3, j//3
-                if (rs,cs) not in sub_block: sub_block[(rs,cs)] = set()
+                r,c = i//3, j//3
+                if (r,c) not in sub:
+                    sub[(r,c)] = set()
                 if board[i][j] != '.':
-                    sub_block[(rs,cs)].add(board[i][j])
                     row[i].add(board[i][j])
                     col[j].add(board[i][j])
+                    sub[(r,c)].add(board[i][j])
         
-        def solve(r,c):
-            if r >= len(board): return True
-            if c == len(board[0]): return solve(r+1, 0)
-            if board[r][c] != '.': return solve(r, c+1) 
-            else:
-                for i in range(1, 10):
-                    s = str(i)
-                    if s in row[r] or s in col[c] or s in sub_block[(r//3,c//3)]:
-                        continue
-                    board[r][c] = s
-                    sub_block[(r//3,c//3)].add(s)
-                    row[r].add(s)
-                    col[c].add(s)
-                    if solve(r, c+1): return True
-                    board[r][c] = '.'
-                    sub_block[(r//3,c//3)].remove(s)
-                    row[r].remove(s)
-                    col[c].remove(s)
-                return False
+        def dfs(i, j):
+            if j >= 9:
+                i += 1
+                j = 0
+            if i >= 9: return True
+            if board[i][j] != '.':
+                return dfs(i, j+1)
+            for k in range(1, 10):
+                v = str(k)
+                if v not in row[i] and v not in col[j] and v not in sub[(i//3,j//3)]:
+                    row[i].add(v)
+                    col[j].add(v)
+                    sub[(i//3,j//3)].add(v)
+                    board[i][j] = v
+                    if dfs(i, j+1): return True
+                    row[i].remove(v)
+                    col[j].remove(v)
+                    sub[(i//3,j//3)].remove(v)
+                    board[i][j] = '.'
+            return False
         
-        solve(0, 0)
+        dfs(0, 0)
         return board
