@@ -1,16 +1,15 @@
 class Solution:
     def reverseWords(self, s: str) -> str:
-        i = 0
-        res = ''
-        while i < len(s):
-            if s[i] == ' ':
-                i += 1
-                continue
+        res = ""
+        i = len(s)-1
+        while i >= 0:
+            tmp = ''
+            while i >= 0 and s[i] != ' ':
+                tmp += s[i]
+                i -= 1
             else:
-                j = i
-                while j < len(s) and s[j] != ' ':
-                    j += 1
-                res = s[i:j] + ' ' + res 
-                i = j if j > i else i+1
+                i -= 1
+            if tmp:
+                res += tmp[::-1] + ' '
         
         return res[:-1]
