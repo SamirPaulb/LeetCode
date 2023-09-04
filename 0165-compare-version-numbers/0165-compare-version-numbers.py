@@ -1,10 +1,15 @@
 class Solution:
-    def compareVersion(self, v1: str, v2: str) -> int:
-        q1 = collections.deque(v1.split('.'))
-        q2 = collections.deque(v2.split('.'))
-        while q1 or q2:
-            t1 = int(q1.popleft()) if q1 else 0
-            t2 = int(q2.popleft()) if q2 else 0
-            if t1 > t2: return 1
-            if t1 < t2: return -1
+    def compareVersion(self, version1: str, version2: str) -> int:
+        v1 = list(version1.split('.'))
+        v2 = list(version2.split('.'))
+        i, j = 0, 0
+        while i < len(v1) or j < len(v2):
+            a1 = v1[i] if i < len(v1) else 0
+            a2 = v2[j] if j < len(v2) else 0
+            if int(a1) < int(a2):
+                return -1
+            elif int(a1) > int(a2):
+                return 1
+            i += 1
+            j += 1
         return 0
