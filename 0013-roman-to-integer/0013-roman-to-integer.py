@@ -15,12 +15,12 @@ class Solution:
                 "M" : 1000,
                 }
         res = 0
-        i = 0 
+        i = 0
         while i < len(s):
-            if i+1 < len(s) and s[i:i+2] in dic:
+            if s[i:i+2] in dic:
                 res += dic[s[i:i+2]]
                 i += 2
-            else:
+            elif s[i] in dic:
                 res += dic[s[i]]
                 i += 1
         
