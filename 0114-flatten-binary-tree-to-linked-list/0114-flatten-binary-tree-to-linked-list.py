@@ -12,13 +12,16 @@ class Solution:
                 cur = cur.right
             else:
                 pre = cur.left
-                while pre.right and pre.right != cur:
+                while pre and pre.right and pre.right != cur:
                     pre = pre.right
                 if not pre.right:
                     pre.right = cur.right
                     cur.right = cur.left
                     cur.left = None
-                    cur = cur.right
                 else:
                     cur = cur.right
+        
+        return root
+
+        
         
