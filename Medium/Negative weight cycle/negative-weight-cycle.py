@@ -1,32 +1,25 @@
 #User function Template for python3
-import heapq
 
 class Solution:
-    def isNegativeWeightCycle(self, n, edges):
-        #Code here
-        adjList = {i:[] for i in range(n)}
-        for edge in edges:
-            adjList[edge[0]].append((edge[2], edge[1])) # (weight. node)
-            
-        for i in range(n):
-            visited = [False] * n
-            minHeap = [(0, i)]
-            while minHeap:
-                dist, node = heapq.heappop(minHeap)
-                if visited[node] == True: 
-                    if node == i and dist < 0: return 1
-                    continue
-                visited[node] = True
-                for c in adjList[node]:
-                    heapq.heappush(minHeap, (dist + c[0], c[1]))
-        
-        return 0
-
-        
-                
-        
-
-
+	def isNegativeWeightCycle(self, n, edges):
+		#Code here
+		dist = [2**31] * n
+		dist[0] = 0
+		for i in range(n):
+		    for j in range(len(edges)):
+		        f, t, w = edges[j]
+		        if dist[f] != 2*31 and dist[f] + w < dist[t]:
+		            dist[t] = dist[f] + w
+		
+		for j in range(len(edges)):
+		    f, t, w = edges[j]
+	        if dist[f] != 2*31 and dist[f] + w < dist[t]:
+	            return 1
+	    
+	    return 0
+	
+		
+		
 
 
 #{ 
